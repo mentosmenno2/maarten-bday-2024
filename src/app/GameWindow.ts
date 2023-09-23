@@ -7,9 +7,8 @@ export class GameWindow {
 	private height: number;
 
 	private constructor() {
-		this.canvasElement = <HTMLCanvasElement>(
-			document.getElementById('game-window')
-		);
+		this.canvasElement = <HTMLCanvasElement>document.getElementById('game-window');
+		this.setSizeFromOffsetSize();
 		this.context2D = this.canvasElement.getContext('2d', {
 			alpha: false,
 			desynchronized: true,
@@ -24,17 +23,19 @@ export class GameWindow {
 	}
 
 	public addEventListeners(): void {
-		window.addEventListener('resize', this.onResize.bind(this));
+		window.addEventListener('resize', this.onResizeEvent.bind(this));
 	}
 
-	private onResize(): void {
+	private onResizeEvent(): void {
 		// In a timeout, as browser first fires the resize event before redrawing elements.
-		setTimeout(() => {
-			this.canvasElement.width = this.canvasElement.offsetWidth;
-			this.canvasElement.height = this.canvasElement.offsetHeight;
-			this.width = this.canvasElement.width;
-			this.height = this.canvasElement.height;
-		}, 1);
+		setTimeout(this.setSizeFromOffsetSize.bind(this), 1);
+	}
+
+	private setSizeFromOffsetSize(): void {
+		this.canvasElement.width = this.canvasElement.offsetWidth;
+		this.canvasElement.height = this.canvasElement.offsetHeight;
+		this.width = this.canvasElement.width;
+		this.height = this.canvasElement.height;
 	}
 
 	public getContext2D(): CanvasRenderingContext2D {

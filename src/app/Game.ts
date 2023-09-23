@@ -34,7 +34,9 @@ export class Game {
 		window.requestAnimationFrame(this.loop.bind(this));
 	}
 
-	private processPhase(deltaTime: number): void {}
+	private processPhase(deltaTime: number): void {
+		console.log( deltaTime );
+	}
 
 	private drawPhase(): void {
 		const gameWindow = GameWindow.getInstance();
