@@ -1,0 +1,16 @@
+/.idea/
+/vendor/
+/node_modules/
+/build/
+
+## Testing
+/.phpunit.result.cache
+/tests/coverage
+.secrets
+codeception.yml
+.env.testing.local
+
+# Ignore Mac OSX related files
+.DS_Store
+.AppleDouble
+.LSOverride
