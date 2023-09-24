@@ -40,6 +40,7 @@ export class Scene extends AbstractScene {
 		}
 
 		if (this.allAssetsLoadedTimer >= 1000) {
+			this.loadingText.setText('Ready?');
 			this.percentageText.setText('Click to start');
 			GameWindow.getInstance().getCanvasElement().style.cursor = 'pointer';
 		}
