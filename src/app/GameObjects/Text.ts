@@ -27,7 +27,7 @@ export class Text extends AbstractGameObject {
 	}
 
 	public draw(): void {
-		if (!this.getVisible()) {
+		if (!this.visible) {
 			return;
 		}
 
@@ -59,14 +59,6 @@ export class Text extends AbstractGameObject {
 		ctx.fillText(this.text, textX, textY);
 		ctx.restore();
 
-		// Debugging
-		ctx.save();
-		ctx.beginPath();
-		ctx.lineWidth = 1;
-		ctx.strokeStyle = 'red';
-		ctx.rect(this.x, this.y, this.width, this.height);
-		ctx.stroke();
-		ctx.closePath();
-		ctx.restore();
+		this.drawDebugData();
 	}
 }
