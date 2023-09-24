@@ -21,13 +21,24 @@ export class AssetManager {
 		return this.instance;
 	}
 
+	public getLoadedPercentage(): number {
+		const totalAssets = this.videos.size;
+		let loadedAssets = 0;
+		this.videos.forEach((videoObject: AbstractVideo) => {
+			if (videoObject.isLoaded()) {
+				loadedAssets++;
+			}
+		});
+		return (loadedAssets / totalAssets) * 100;
+	}
+
 	public getVideos(): Map<string, AbstractVideo> {
 		return this.videos;
 	}
 
 	public loadAssets(): void {
 		this.videos.forEach((videoObject: AbstractVideo) => {
-			videoObject.getVideoElement().load();
+			videoObject.load();
 		});
 	}
 }

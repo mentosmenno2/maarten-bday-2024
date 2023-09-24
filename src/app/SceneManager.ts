@@ -1,5 +1,5 @@
 import { AbstractScene } from './Scenes/AbstractScene.js';
-import { Scene as OneYearAgoScene } from './Scenes/OneYearAgo/Scene.js';
+import { Scene as LoadingScene } from './Scenes/Loading/Scene.js';
 
 export class SceneManager {
 	private static instance: SceneManager | null;
@@ -7,7 +7,7 @@ export class SceneManager {
 	protected scene: AbstractScene;
 
 	private constructor() {
-		this.scene = new OneYearAgoScene();
+		this.scene = new LoadingScene();
 	}
 
 	public static getInstance(): SceneManager {
