@@ -1,6 +1,7 @@
 import { AssetManager } from '../../Assets/AssetManager.js';
 import { Text } from '../../GameObjects/Text.js';
 import { GameWindow } from '../../GameWindow.js';
+import { Position } from '../../Position.js';
 import { SceneManager } from '../../SceneManager.js';
 import { AbstractScene } from '../AbstractScene.js';
 import { Scene as OneYearAgoScene } from '../OneYearAgo/Scene.js';
@@ -12,16 +13,14 @@ export class Scene extends AbstractScene {
 	protected percentageText: Text;
 	protected percentageLoaded: number = 0;
 	protected allAssetsLoadedTimer: number = 0;
+	protected mouseClickHandler: EventListener;
 
 	public constructor() {
 		super();
 		this.loadingText = new Text();
 		this.loadingText.setText('Loading...');
 		this.percentageText = new Text();
-		this.reset();
-	}
-
-	public reset(): void {
+		this.mouseClickHandler = this.onMouseClick.bind(this);
 		this.percentageLoaded = 0;
 		this.allAssetsLoadedTimer = 0;
 		this.percentageText.setText(`${Math.round(this.percentageLoaded)}%`);
@@ -34,12 +33,25 @@ export class Scene extends AbstractScene {
 		this.percentageLoaded = AssetManager.getInstance().getLoadedPercentage();
 		this.processPercentageText();
 		if (this.percentageLoaded >= 100) {
-			this.allAssetsLoadedTimer += deltaTime;
+			this.allAssetsLoadedTimer = Math.min(
+				1000,
+				this.allAssetsLoadedTimer + deltaTime,
+			);
 		}
 
 		if (this.allAssetsLoadedTimer >= 1000) {
-			SceneManager.getInstance().setScene(new OneYearAgoScene());
+			this.percentageText.setText('Click to start');
+			GameWindow.getInstance().getCanvasElement().style.cursor = 'pointer';
 		}
+	}
+
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public onMouseClick(_position: Position): void {
+		if (this.allAssetsLoadedTimer < 1000) {
+			return;
+		}
+		GameWindow.getInstance().getCanvasElement().style.cursor = 'auto';
+		SceneManager.getInstance().setScene(new OneYearAgoScene());
 	}
 
 	private processLoadingText(): void {
