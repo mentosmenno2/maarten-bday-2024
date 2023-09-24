@@ -1,20 +1,10 @@
-import { AbstractVideo } from '../Assets/Videos/AbstractVideo.js';
 import { GameWindow } from '../GameWindow.js';
 import { AbstractGameObject } from './AbstractGameObject.js';
 
-export class Video extends AbstractGameObject {
-	protected asset: AbstractVideo;
+export class Button extends AbstractGameObject {
 
 	public constructor() {
 		super();
-	}
-
-	public getAsset(): AbstractVideo {
-		return this.asset;
-	}
-
-	public setAsset(asset: AbstractVideo): void {
-		this.asset = asset;
 	}
 
 	public draw(): void {
@@ -25,13 +15,7 @@ export class Video extends AbstractGameObject {
 		const gameWindow = GameWindow.getInstance();
 		const ctx = gameWindow.getContext2D();
 		ctx.save();
-		ctx.drawImage(
-			this.asset.getVideoElement(),
-			this.x,
-			this.y,
-			this.width,
-			this.height,
-		);
+
 		ctx.restore();
 
 		// Debugging

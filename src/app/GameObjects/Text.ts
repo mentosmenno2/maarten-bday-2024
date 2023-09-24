@@ -66,6 +66,7 @@ export class Text extends AbstractGameObject {
 		ctx.strokeStyle = 'red';
 		ctx.rect(this.x, this.y, this.width, this.height);
 		ctx.stroke();
+		ctx.closePath();
 		ctx.restore();
 	}
 }
