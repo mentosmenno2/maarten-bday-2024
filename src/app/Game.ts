@@ -53,7 +53,7 @@ export class Game {
 
 	public isDebugMode(): boolean {
 		const urlObject = new URL(window.location.href);
-		const value = urlObject.searchParams.get( 'debug' );
+		const value = urlObject.searchParams.get('debug');
 		return value === 'true';
 	}
 }

@@ -42,7 +42,8 @@ export class Text extends AbstractGameObject {
 			ctx.font = `${fontSize}px ${this.fontFamily}`;
 			const metrics = ctx.measureText(this.text);
 			textWidth = metrics.width;
-			textHeight = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
+			textHeight =
+				metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
 			if (textWidth > this.width || textHeight > this.height) {
 				break;
 			}

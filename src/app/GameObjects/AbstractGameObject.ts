@@ -1,5 +1,5 @@
-import { Game } from "../Game.js";
-import { GameWindow } from "../GameWindow.js";
+import { Game } from '../Game.js';
+import { GameWindow } from '../GameWindow.js';
 
 export abstract class AbstractGameObject {
 	protected visible: boolean = true;
@@ -66,7 +66,7 @@ export abstract class AbstractGameObject {
 			return;
 		}
 
-		if ( ! Game.getInstance().isDebugMode() ) {
+		if (!Game.getInstance().isDebugMode()) {
 			return;
 		}
 
@@ -85,7 +85,7 @@ export abstract class AbstractGameObject {
 
 		// Draw position
 		ctx.save();
-		ctx.font = '10px \'VT323\'';
+		ctx.font = "10px 'VT323'";
 		ctx.fillStyle = 'red';
 		ctx.textAlign = 'start';
 		ctx.textBaseline = 'top';
@@ -96,20 +96,44 @@ export abstract class AbstractGameObject {
 
 		// Draw size and opacity
 		ctx.save();
-		ctx.font = '10px \'VT323\'';
+		ctx.font = "10px 'VT323'";
 		ctx.fillStyle = 'red';
 		ctx.textAlign = 'start';
 		ctx.textBaseline = 'top';
 		ctx.globalAlpha = this.opacity;
 		const widthText = `w: ${Math.round(this.width)}`;
 		const widthTextMetrics = ctx.measureText(widthText);
-		ctx.fillText(widthText, this.x + this.width - widthTextMetrics.width - 2, this.y + this.height - (widthTextMetrics.fontBoundingBoxAscent + widthTextMetrics.fontBoundingBoxDescent) - 22);
+		ctx.fillText(
+			widthText,
+			this.x + this.width - widthTextMetrics.width - 2,
+			this.y +
+				this.height -
+				(widthTextMetrics.fontBoundingBoxAscent +
+					widthTextMetrics.fontBoundingBoxDescent) -
+				22,
+		);
 		const heightText = `h: ${Math.round(this.height)}`;
 		const HeightTextMetrics = ctx.measureText(heightText);
-		ctx.fillText(heightText, this.x + this.width - HeightTextMetrics.width - 2, this.y + this.height - (HeightTextMetrics.fontBoundingBoxAscent + HeightTextMetrics.fontBoundingBoxDescent) - 12);
+		ctx.fillText(
+			heightText,
+			this.x + this.width - HeightTextMetrics.width - 2,
+			this.y +
+				this.height -
+				(HeightTextMetrics.fontBoundingBoxAscent +
+					HeightTextMetrics.fontBoundingBoxDescent) -
+				12,
+		);
 		const opacityText = `o: ${Math.round(this.height)}`;
 		const OpactiyTextMetrics = ctx.measureText(heightText);
-		ctx.fillText(opacityText, this.x + this.width - OpactiyTextMetrics.width - 2, this.y + this.height - (OpactiyTextMetrics.fontBoundingBoxAscent + OpactiyTextMetrics.fontBoundingBoxDescent) - 2);
+		ctx.fillText(
+			opacityText,
+			this.x + this.width - OpactiyTextMetrics.width - 2,
+			this.y +
+				this.height -
+				(OpactiyTextMetrics.fontBoundingBoxAscent +
+					OpactiyTextMetrics.fontBoundingBoxDescent) -
+				2,
+		);
 		ctx.restore();
 	}
 }
