@@ -5,7 +5,7 @@ export abstract class AbstractAudio extends AbstractAsset {
 
 	public constructor() {
 		super();
-		this.audioElement = new Audio( this.file );
+		this.audioElement = new Audio(this.file);
 		this.audioElement.addEventListener(
 			'canplaythrough',
 			this.onLoad.bind(this),

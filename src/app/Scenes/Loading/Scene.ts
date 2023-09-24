@@ -51,7 +51,11 @@ export class Scene extends AbstractScene {
 			return;
 		}
 
-		AssetManager.getInstance().getAudio().get('buttonClick').getAudioElement().play();
+		AssetManager.getInstance()
+			.getAudio()
+			.get('buttonClick')
+			.getAudioElement()
+			.play();
 		GameWindow.getInstance().getCanvasElement().style.cursor = 'auto';
 		SceneManager.getInstance().setScene(new OneYearAgoScene());
 	}

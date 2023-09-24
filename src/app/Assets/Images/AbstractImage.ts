@@ -6,10 +6,7 @@ export abstract class AbstractImage extends AbstractAsset {
 	public constructor() {
 		super();
 		this.imageElement = new Image();
-		this.imageElement.addEventListener(
-			'load',
-			this.onLoad.bind(this),
-		);
+		this.imageElement.addEventListener('load', this.onLoad.bind(this));
 	}
 
 	public load(): void {}
