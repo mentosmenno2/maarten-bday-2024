@@ -14,35 +14,27 @@ jobs:
   php:
     name: NPM test
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: ['18']
     steps:
-      - name: Install NodeJS
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+			- name: Install NodeJS
         uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - uses: actions/checkout@v2
-        with:
-          path: maarten-bday-2024/
-          ref: ${{ github.event.pull_request.head.sha }}
       - name: Debugging
         run: |
           node -v
           npm -v
       - name: NPM Install
         run: |
-          cd maarten-bday-2024/
           npm ci
       - name: test:lint
         run: |
-          cd maarten-bday-2024/
           npm run lint --if-present
       - name: test:test
         run: |
-          cd maarten-bday-2024/
           npm run test
       - name: test:build
         run: |
-          cd maarten-bday-2024/
           npm run build --if-present
