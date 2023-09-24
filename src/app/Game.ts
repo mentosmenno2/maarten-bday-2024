@@ -24,6 +24,7 @@ export class Game {
 
 	public addEventListeners(): void {
 		GameWindow.getInstance().addEventListeners();
+		AssetManager.getInstance().addEventListeners();
 	}
 
 	public loop(timestamp: number): void {

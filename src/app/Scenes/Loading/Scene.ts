@@ -50,6 +50,8 @@ export class Scene extends AbstractScene {
 		if (this.allAssetsLoadedTimer < 1000) {
 			return;
 		}
+
+		AssetManager.getInstance().getAudio().get('buttonClick').getAudioElement().play();
 		GameWindow.getInstance().getCanvasElement().style.cursor = 'auto';
 		SceneManager.getInstance().setScene(new OneYearAgoScene());
 	}
