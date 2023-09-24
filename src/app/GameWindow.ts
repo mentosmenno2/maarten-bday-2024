@@ -18,6 +18,7 @@ export class GameWindow {
 			alpha: false,
 			desynchronized: true,
 		});
+		this.context2D.imageSmoothingEnabled = false;
 	}
 
 	public static getInstance(): GameWindow {
