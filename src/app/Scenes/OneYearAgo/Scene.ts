@@ -14,15 +14,11 @@ export class Scene extends AbstractScene {
 		super();
 
 		this.textOneYearAgo = new Text();
-		this.videoOneYearAgo = new Video();
-		this.reset();
-	}
-
-	public reset(): void {
 		this.textOneYearAgo.setText('One year ago');
 		this.textOneYearAgo.setVisible(false);
 		this.textOneYearAgo.setOpactiy(0);
 
+		this.videoOneYearAgo = new Video();
 		this.videoOneYearAgo.setAsset(
 			AssetManager.getInstance().getVideos().get('oneYearAgo'),
 		);
