@@ -11,6 +11,10 @@ export class Scene extends AbstractScene {
 		super();
 
 		this.textOneYearAgo = new Text();
+		this.reset();
+	}
+
+	public reset(): void {
 		this.textOneYearAgo.setText('Hi het is ikke je weet wel');
 		this.textOneYearAgo.setVisible(false);
 	}

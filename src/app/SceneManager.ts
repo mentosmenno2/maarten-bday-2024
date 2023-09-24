@@ -20,4 +20,8 @@ export class SceneManager {
 	public getScene(): AbstractScene {
 		return this.scene;
 	}
+
+	public setScene(scene: AbstractScene): void {
+		this.scene = scene;
+	}
 }

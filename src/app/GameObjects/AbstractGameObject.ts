@@ -4,6 +4,7 @@ export abstract class AbstractGameObject {
 	protected y: number = 0;
 	protected width: number = 0;
 	protected height: number = 0;
+	protected opacity: number = 1;
 
 	public constructor() {}
 
@@ -45,6 +46,14 @@ export abstract class AbstractGameObject {
 
 	public setHeight(height: number): void {
 		this.height = height;
+	}
+
+	public getOpacity(): number {
+		return this.opacity;
+	}
+
+	public setOpactiy(opacity: number): void {
+		this.opacity = opacity;
 	}
 
 	public abstract draw(): void;

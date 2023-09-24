@@ -52,12 +52,14 @@ export class Text extends AbstractGameObject {
 		ctx.fillStyle = this.fillStyle;
 		ctx.textAlign = 'start';
 		ctx.textBaseline = 'top';
+		ctx.globalAlpha = this.opacity;
 
 		const textX = this.x + (this.width - textWidth) / 2;
 		const textY = this.y + (this.height - textHeight) / 2;
 		ctx.fillText(this.text, textX, textY);
 		ctx.restore();
 
+		// Debugging
 		ctx.save();
 		ctx.beginPath();
 		ctx.lineWidth = 1;
