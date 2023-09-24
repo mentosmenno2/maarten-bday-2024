@@ -1,3 +1,4 @@
+import { AssetManager } from './Assets/AssetManager.js';
 import { GameWindow } from './GameWindow.js';
 import { SceneManager } from './SceneManager.js';
 
@@ -17,6 +18,7 @@ export class Game {
 
 	public initialize(): void {
 		this.addEventListeners();
+		AssetManager.getInstance().loadAssets();
 		window.requestAnimationFrame(this.loop.bind(this));
 	}
 
