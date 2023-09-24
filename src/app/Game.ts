@@ -50,4 +50,10 @@ export class Game {
 
 		SceneManager.getInstance().getScene().draw();
 	}
+
+	public isDebugMode(): boolean {
+		const urlObject = new URL(window.location.href);
+		const value = urlObject.searchParams.get( 'debug' );
+		return value === 'true';
+	}
 }
