@@ -123,8 +123,8 @@ export abstract class AbstractGameObject {
 					HeightTextMetrics.fontBoundingBoxDescent) -
 				12,
 		);
-		const opacityText = `o: ${Math.round(this.height)}`;
-		const OpactiyTextMetrics = ctx.measureText(heightText);
+		const opacityText = `o: ${Math.round(this.opacity * 100)}%`;
+		const OpactiyTextMetrics = ctx.measureText(opacityText);
 		ctx.fillText(
 			opacityText,
 			this.x + this.width - OpactiyTextMetrics.width - 2,
