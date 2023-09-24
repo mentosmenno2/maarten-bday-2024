@@ -1,4 +1,5 @@
 import { GameWindow } from './GameWindow.js';
+import { SceneManager } from './SceneManager.js';
 
 export class Game {
 	private static instance: Game | null;
@@ -30,17 +31,20 @@ export class Game {
 
 		const deltaTime = timestamp - this.lastLoopTimestamp;
 		this.processPhase(deltaTime);
+		this.lastLoopTimestamp = timestamp;
 		this.drawPhase();
 		window.requestAnimationFrame(this.loop.bind(this));
 	}
 
 	private processPhase(deltaTime: number): void {
-		console.log( deltaTime );
+		SceneManager.getInstance().getScene().process(deltaTime);
 	}
 
 	private drawPhase(): void {
 		const gameWindow = GameWindow.getInstance();
 		const ctx = gameWindow.getContext2D();
 		ctx.clearRect(0, 0, gameWindow.getWidth(), gameWindow.getHeight());
+
+		SceneManager.getInstance().getScene().draw();
 	}
 }

@@ -7,7 +7,9 @@ export class GameWindow {
 	private height: number;
 
 	private constructor() {
-		this.canvasElement = <HTMLCanvasElement>document.getElementById('game-window');
+		this.canvasElement = <HTMLCanvasElement>(
+			document.getElementById('game-window')
+		);
 		this.setSizeFromOffsetSize();
 		this.context2D = this.canvasElement.getContext('2d', {
 			alpha: false,
