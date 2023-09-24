@@ -1,8 +1,8 @@
-import { Text } from '../GameObjects/Text.js';
-import { GameWindow } from '../GameWindow.js';
-import { AbstractScene } from './AbstractScene.js';
+import { Text } from '../../GameObjects/Text.js';
+import { GameWindow } from '../../GameWindow.js';
+import { AbstractScene } from '../AbstractScene.js';
 
-export class OneYearAgo extends AbstractScene {
+export class Scene extends AbstractScene {
 	protected passedTime: number = 0;
 
 	protected textOneYearAgo: Text;
