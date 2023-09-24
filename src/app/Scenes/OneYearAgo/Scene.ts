@@ -23,7 +23,9 @@ export class Scene extends AbstractScene {
 		this.textOneYearAgo.setVisible(false);
 		this.textOneYearAgo.setOpactiy(0);
 
-		this.videoOneYearAgo.setAsset( AssetManager.getInstance().getVideos().get( 'oneYearAgo' ) );
+		this.videoOneYearAgo.setAsset(
+			AssetManager.getInstance().getVideos().get('oneYearAgo'),
+		);
 	}
 
 	public process(deltaTime: number): void {
@@ -48,7 +50,7 @@ export class Scene extends AbstractScene {
 			this.textOneYearAgo.setOpactiy((this.passedTime - 1000) / 500);
 		}
 		if (this.passedTime >= 3500 && this.passedTime <= 4000) {
-			this.textOneYearAgo.setOpactiy(1 - ( (this.passedTime - 3500) / 500 ));
+			this.textOneYearAgo.setOpactiy(1 - (this.passedTime - 3500) / 500);
 		}
 	}
 
@@ -60,7 +62,10 @@ export class Scene extends AbstractScene {
 		this.videoOneYearAgo.setY(0);
 		if (this.passedTime >= 5000 && this.passedTime <= 50000) {
 			this.videoOneYearAgo.setVisible(true);
-			if ( this.videoOneYearAgo.getAsset().getVideoElement().paused && this.videoOneYearAgo.getAsset().getVideoElement().currentTime === 0 ) {
+			if (
+				this.videoOneYearAgo.getAsset().getVideoElement().paused &&
+				this.videoOneYearAgo.getAsset().getVideoElement().currentTime === 0
+			) {
 				this.videoOneYearAgo.getAsset().getVideoElement().play();
 			}
 		} else {
@@ -68,7 +73,6 @@ export class Scene extends AbstractScene {
 			this.videoOneYearAgo.getAsset().getVideoElement().pause();
 			this.videoOneYearAgo.getAsset().getVideoElement().currentTime = 0;
 		}
-
 	}
 
 	public draw(): void {

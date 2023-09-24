@@ -1,4 +1,4 @@
-import { AbstractAsset } from "../AbstractAsset.js";
+import { AbstractAsset } from '../AbstractAsset.js';
 
 export abstract class AbstractVideo extends AbstractAsset {
 	protected videoElement: HTMLVideoElement;

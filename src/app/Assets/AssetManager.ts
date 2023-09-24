@@ -1,15 +1,17 @@
-import { AbstractVideo } from "./Videos/AbstractVideo.js";
-import { OneYearAgo } from "./Videos/OneYearAgo.js";
+import { AbstractVideo } from './Videos/AbstractVideo.js';
+import { OneYearAgo } from './Videos/OneYearAgo.js';
 
 export class AssetManager {
 	private static instance: AssetManager | null;
 
-	protected videos: Map<string,AbstractVideo>;
+	protected videos: Map<string, AbstractVideo>;
 
 	private constructor() {
-		this.videos = new Map(Object.entries({
-			oneYearAgo: new OneYearAgo(),
-		}));
+		this.videos = new Map(
+			Object.entries({
+				oneYearAgo: new OneYearAgo(),
+			}),
+		);
 	}
 
 	public static getInstance(): AssetManager {
@@ -19,12 +21,12 @@ export class AssetManager {
 		return this.instance;
 	}
 
-	public getVideos(): Map<string,AbstractVideo> {
+	public getVideos(): Map<string, AbstractVideo> {
 		return this.videos;
 	}
 
 	public loadAssets(): void {
-		this.videos.forEach(( videoObject: AbstractVideo ) => {
+		this.videos.forEach((videoObject: AbstractVideo) => {
 			videoObject.getVideoElement().load();
 		});
 	}

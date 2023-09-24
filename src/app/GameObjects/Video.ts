@@ -30,7 +30,7 @@ export class Video extends AbstractGameObject {
 			this.x,
 			this.y,
 			this.width,
-			this.height
+			this.height,
 		);
 		ctx.restore();
 
