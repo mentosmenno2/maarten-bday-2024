@@ -8,6 +8,7 @@ export abstract class AbstractGameObject {
 	protected width: number = 0;
 	protected height: number = 0;
 	protected opacity: number = 1;
+	protected speed: number = 0;
 
 	public constructor() {}
 
@@ -57,6 +58,14 @@ export abstract class AbstractGameObject {
 
 	public setOpactiy(opacity: number): void {
 		this.opacity = opacity;
+	}
+
+	public getSpeed(): number {
+		return this.speed;
+	}
+
+	public setSpeed(speed: number): void {
+		this.speed = speed;
 	}
 
 	public abstract draw(): void;
