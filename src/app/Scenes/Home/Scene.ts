@@ -1,38 +1,69 @@
 import { AssetManager } from '../../Assets/AssetManager.js';
 import { Image as ImageGameObject } from '../../GameObjects/Image.js';
 import { GameWindow } from '../../GameWindow.js';
+import { Position } from '../../Position.js';
 import { AbstractScene } from '../AbstractScene.js';
 import { StartingPositions } from './StartingPositions.js';
 
 export class Scene extends AbstractScene {
 	protected background: ImageGameObject;
+	protected maarten: ImageGameObject;
 
 	public constructor( startingPosition: StartingPositions ) {
 		super();
 
+		// Create gameObjects
 		this.background = new ImageGameObject();
 		this.background.setAsset(
 			AssetManager.getInstance().getImages().get('backgroundHome'),
 		);
 
-		console.log(startingPosition);
+		this.maarten = new ImageGameObject();
+		this.maarten.setAsset(
+			AssetManager.getInstance().getImages().get('duckMaarten'),
+		);
+
+		// Set gameObject sizes and speeds
+		this.setGameObjectSizes();
+
+		// Set positions
+		this.background.setX(0);
+		this.background.setY(0);
+
+		const maartenStartPosition = this.getPositionFromStartingPosition( startingPosition );
+		this.maarten.setX( maartenStartPosition.getX() );
+		this.maarten.setY( maartenStartPosition.getY() );
 	}
 
 	public process(deltaTime: number): void {
-		this.processBackground();
+		this.setGameObjectSizes();
 
 		console.log(deltaTime);
 	}
 
-	private processBackground(): void {
+	private setGameObjectSizes(): void {
 		const gameWindow = GameWindow.getInstance();
+
 		this.background.setWidth(gameWindow.getWidth());
 		this.background.setHeight(gameWindow.getHeight());
-		this.background.setX(0);
-		this.background.setY(0);
+
+		this.maarten.setWidth(this.maarten.getAsset().getWidth() * ( gameWindow.getHeight() / 100 ));
+		this.maarten.setHeight(this.maarten.getAsset().getHeight() * ( gameWindow.getHeight() / 100 ));
 	}
 
 	public draw(): void {
 		this.background.draw();
+		this.maarten.draw();
+	}
+
+	getPositionFromStartingPosition( startingPosition: StartingPositions ): Position {
+		const position = new Position(0, 0);
+		switch (startingPosition) {
+			case StartingPositions.Door:
+
+				break;
+		}
+
+		return position;
 	}
 }

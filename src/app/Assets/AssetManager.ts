@@ -2,9 +2,15 @@ import { AbstractAudio } from './Audio/AbstractAudio.js';
 import { ButtonClick } from './Audio/ButtonClick.js';
 import { AbstractImage } from './Images/AbstractImage.js';
 import { BackgroundHome } from './Images/BackgroundHome.js';
+import { DuckMaarten } from './Images/DuckMaarten.js';
 import { AbstractVideo } from './Videos/AbstractVideo.js';
 import { OneYearAgo } from './Videos/OneYearAgo.js';
 import { Today } from './Videos/Today.js';
+
+export enum Images {
+	BackgroundHome = 'backgroundHome',
+	DuckMaarten = 'duckMaarten',
+}
 
 export class AssetManager {
 	private static instance: AssetManager | null;
@@ -38,6 +44,7 @@ export class AssetManager {
 
 		this.images = new Map(Object.entries({
 			backgroundHome: new BackgroundHome(),
+			duckMaarten: new DuckMaarten()
 		}));
 
 		this.audio = new Map(

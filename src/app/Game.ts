@@ -1,4 +1,5 @@
 import { AssetManager } from './Assets/AssetManager.js';
+import { Cursor } from './Cursor.js';
 import { GameWindow } from './GameWindow.js';
 import { SceneManager } from './SceneManager.js';
 
@@ -49,6 +50,9 @@ export class Game {
 		ctx.clearRect(0, 0, gameWindow.getWidth(), gameWindow.getHeight());
 
 		SceneManager.getInstance().getScene().draw();
+		if ( this.isDebugMode() ) {
+			Cursor.getInstance().drawDebugData();
+		}
 	}
 
 	public isDebugMode(): boolean {

@@ -1,11 +1,11 @@
 import { AbstractImage } from './AbstractImage.js';
 
-export class BackgroundHome extends AbstractImage {
+export class DuckMaarten extends AbstractImage {
 	public constructor() {
 		super();
-		this.file = 'assets/images/backgrounds/home.png';
+		this.file = 'assets/images/ducks/maarten.png';
 		this.imageElement.setAttribute('src', this.file);
-		this.width = 150;
-		this.height = 150;
+		this.width = 24;
+		this.height = 28;
 	}
 }

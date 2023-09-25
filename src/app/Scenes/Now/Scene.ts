@@ -33,7 +33,7 @@ export class Scene extends AbstractScene {
 		this.processvideoToday();
 
 		if (this.passedTime >= 62000) {
-			SceneManager.getInstance().setScene(new HomeScene( HomeStartingPositions.None ));
+			SceneManager.getInstance().setScene(new HomeScene( HomeStartingPositions.PC ));
 		}
 	}
 

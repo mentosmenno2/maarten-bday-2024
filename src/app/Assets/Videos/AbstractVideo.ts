@@ -2,6 +2,8 @@ import { AbstractAsset } from '../AbstractAsset.js';
 
 export abstract class AbstractVideo extends AbstractAsset {
 	protected videoElement: HTMLVideoElement;
+	protected width: number;
+	protected height: number;
 
 	public constructor() {
 		super();
@@ -10,6 +12,8 @@ export abstract class AbstractVideo extends AbstractAsset {
 			'canplaythrough',
 			this.onLoad.bind(this),
 		);
+		this.videoElement.width = this.width;
+		this.videoElement.height = this.height;
 	}
 
 	public load(): void {
@@ -18,5 +22,13 @@ export abstract class AbstractVideo extends AbstractAsset {
 
 	public getVideoElement(): HTMLVideoElement {
 		return this.videoElement;
+	}
+
+	public getWidth(): number {
+		return this.width;
+	}
+
+	public getHeight(): number {
+		return this.height;
 	}
 }

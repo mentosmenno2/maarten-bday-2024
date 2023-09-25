@@ -13,14 +13,12 @@ export class Scene extends AbstractScene {
 	protected percentageText: Text;
 	protected percentageLoaded: number = 0;
 	protected allAssetsLoadedTimer: number = 0;
-	protected mouseClickHandler: EventListener;
 
 	public constructor() {
 		super();
 		this.loadingText = new Text();
 		this.loadingText.setText('Loading...');
 		this.percentageText = new Text();
-		this.mouseClickHandler = this.onMouseClick.bind(this);
 		this.percentageLoaded = 0;
 		this.allAssetsLoadedTimer = 0;
 		this.percentageText.setText(`${Math.round(this.percentageLoaded)}%`);
