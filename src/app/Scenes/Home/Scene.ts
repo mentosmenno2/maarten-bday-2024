@@ -9,7 +9,7 @@ export class Scene extends AbstractScene {
 	protected background: ImageGameObject;
 	protected maarten: ImageGameObject;
 
-	public constructor( startingPosition: StartingPositions ) {
+	public constructor(startingPosition: StartingPositions) {
 		super();
 
 		// Create gameObjects
@@ -30,9 +30,10 @@ export class Scene extends AbstractScene {
 		this.background.setX(0);
 		this.background.setY(0);
 
-		const maartenStartPosition = this.getPositionFromStartingPosition( startingPosition );
-		this.maarten.setX( maartenStartPosition.getX() );
-		this.maarten.setY( maartenStartPosition.getY() );
+		const maartenStartPosition =
+			this.getPositionFromStartingPosition(startingPosition);
+		this.maarten.setX(maartenStartPosition.getX());
+		this.maarten.setY(maartenStartPosition.getY());
 	}
 
 	public process(deltaTime: number): void {
@@ -47,8 +48,12 @@ export class Scene extends AbstractScene {
 		this.background.setWidth(gameWindow.getWidth());
 		this.background.setHeight(gameWindow.getHeight());
 
-		this.maarten.setWidth(this.maarten.getAsset().getWidth() * ( gameWindow.getHeight() / 100 ));
-		this.maarten.setHeight(this.maarten.getAsset().getHeight() * ( gameWindow.getHeight() / 100 ));
+		this.maarten.setWidth(
+			this.maarten.getAsset().getWidth() * (gameWindow.getHeight() / 100),
+		);
+		this.maarten.setHeight(
+			this.maarten.getAsset().getHeight() * (gameWindow.getHeight() / 100),
+		);
 	}
 
 	public draw(): void {
@@ -56,11 +61,20 @@ export class Scene extends AbstractScene {
 		this.maarten.draw();
 	}
 
-	getPositionFromStartingPosition( startingPosition: StartingPositions ): Position {
-		const position = new Position(0, 0);
+	getPositionFromStartingPosition(
+		startingPosition: StartingPositions,
+	): Position {
+		const gameWindow = GameWindow.getInstance();
+		const position = new Position(
+			(gameWindow.getWidth() / 1000) * 300,
+			(gameWindow.getHeight() / 1000) * 600,
+		);
 		switch (startingPosition) {
 			case StartingPositions.Door:
-
+				position.setX((gameWindow.getWidth() / 1000) * 650);
+				position.setY(
+					(gameWindow.getHeight() / 1000) * 700 - this.maarten.getHeight(),
+				);
 				break;
 		}
 

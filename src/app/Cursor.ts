@@ -1,12 +1,11 @@
-import { GameWindow } from "./GameWindow.js";
+import { GameWindow } from './GameWindow.js';
 
 export class Cursor {
 	private static instance: Cursor | null;
 	private x: number = 0;
 	private y: number = 0;
 
-	private constructor() {
-	}
+	private constructor() {}
 
 	public static getInstance(): Cursor {
 		if (!this.instance) {

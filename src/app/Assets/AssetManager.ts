@@ -42,10 +42,12 @@ export class AssetManager {
 			document.getElementById('volume-audio-effect-label-value')
 		);
 
-		this.images = new Map(Object.entries({
-			backgroundHome: new BackgroundHome(),
-			duckMaarten: new DuckMaarten()
-		}));
+		this.images = new Map(
+			Object.entries({
+				backgroundHome: new BackgroundHome(),
+				duckMaarten: new DuckMaarten(),
+			}),
+		);
 
 		this.audio = new Map(
 			Object.entries({

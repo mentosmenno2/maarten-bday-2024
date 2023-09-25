@@ -1,4 +1,4 @@
 export enum StartingPositions {
-    PC = 'pc',
-    Door = 'door',
+	PC = 'pc',
+	Door = 'door',
 }
