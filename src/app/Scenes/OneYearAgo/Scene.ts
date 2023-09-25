@@ -2,7 +2,9 @@ import { AssetManager } from '../../Assets/AssetManager.js';
 import { Text } from '../../GameObjects/Text.js';
 import { Video } from '../../GameObjects/Video.js';
 import { GameWindow } from '../../GameWindow.js';
+import { SceneManager } from '../../SceneManager.js';
 import { AbstractScene } from '../AbstractScene.js';
+import { Scene as NowScene } from '../Now/Scene.js';
 
 export class Scene extends AbstractScene {
 	protected passedTime: number = 0;
@@ -28,6 +30,10 @@ export class Scene extends AbstractScene {
 		this.passedTime += deltaTime;
 		this.processTextOneYearAgo();
 		this.processVideoOneYearAgo();
+
+		if (this.passedTime >= 3500 && this.passedTime >= 50000) {
+			SceneManager.getInstance().setScene(new NowScene());
+		}
 	}
 
 	private processTextOneYearAgo(): void {
