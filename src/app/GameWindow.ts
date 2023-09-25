@@ -1,3 +1,4 @@
+import { Cursor } from './Cursor.js';
 import { Position } from './Position.js';
 import { SceneManager } from './SceneManager.js';
 
@@ -66,6 +67,8 @@ export class GameWindow {
 		);
 
 		SceneManager.getInstance().getScene().onMouseClick(mousePosition);
+		Cursor.getInstance().setX(mousePosition.getX());
+		Cursor.getInstance().setY(mousePosition.getY());
 	}
 
 	private onMouseMoveEvent(e: MouseEvent): void {
@@ -81,6 +84,8 @@ export class GameWindow {
 		);
 
 		SceneManager.getInstance().getScene().onMouseMove(mousePosition);
+		Cursor.getInstance().setX(mousePosition.getX());
+		Cursor.getInstance().setY(mousePosition.getY());
 	}
 
 	private onTouchMoveEvent(e: TouchEvent): void {
@@ -96,6 +101,8 @@ export class GameWindow {
 		);
 
 		SceneManager.getInstance().getScene().onMouseMove(mousePosition);
+		Cursor.getInstance().setX(mousePosition.getX());
+		Cursor.getInstance().setY(mousePosition.getY());
 	}
 
 	public getContext2D(): CanvasRenderingContext2D {

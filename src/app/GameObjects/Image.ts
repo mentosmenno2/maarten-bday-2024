@@ -1,19 +1,19 @@
-import { AbstractVideo } from '../Assets/Videos/AbstractVideo.js';
+import { AbstractImage } from '../Assets/Images/AbstractImage.js';
 import { GameWindow } from '../GameWindow.js';
 import { AbstractGameObject } from './AbstractGameObject.js';
 
-export class Video extends AbstractGameObject {
-	protected asset: AbstractVideo;
+export class Image extends AbstractGameObject {
+	protected asset: AbstractImage;
 
 	public constructor() {
 		super();
 	}
 
-	public getAsset(): AbstractVideo {
+	public getAsset(): AbstractImage {
 		return this.asset;
 	}
 
-	public setAsset(asset: AbstractVideo): void {
+	public setAsset(asset: AbstractImage): void {
 		this.asset = asset;
 	}
 
@@ -27,7 +27,7 @@ export class Video extends AbstractGameObject {
 		ctx.save();
 		ctx.imageSmoothingEnabled = false;
 		ctx.drawImage(
-			this.asset.getVideoElement(),
+			this.asset.getImageElement(),
 			this.x,
 			this.y,
 			this.width,

@@ -1,9 +1,16 @@
 import { AbstractAudio } from './Audio/AbstractAudio.js';
 import { ButtonClick } from './Audio/ButtonClick.js';
 import { AbstractImage } from './Images/AbstractImage.js';
+import { BackgroundHome } from './Images/BackgroundHome.js';
+import { DuckMaarten } from './Images/DuckMaarten.js';
 import { AbstractVideo } from './Videos/AbstractVideo.js';
 import { OneYearAgo } from './Videos/OneYearAgo.js';
 import { Today } from './Videos/Today.js';
+
+export enum Images {
+	BackgroundHome = 'backgroundHome',
+	DuckMaarten = 'duckMaarten',
+}
 
 export class AssetManager {
 	private static instance: AssetManager | null;
@@ -35,7 +42,12 @@ export class AssetManager {
 			document.getElementById('volume-audio-effect-label-value')
 		);
 
-		this.images = new Map(Object.entries({}));
+		this.images = new Map(
+			Object.entries({
+				backgroundHome: new BackgroundHome(),
+				duckMaarten: new DuckMaarten(),
+			}),
+		);
 
 		this.audio = new Map(
 			Object.entries({
@@ -91,10 +103,15 @@ export class AssetManager {
 	}
 
 	public getLoadedPercentage(): number {
-		const totalAssets = this.audio.size + this.videos.size;
+		const totalAssets = this.audio.size + this.images.size + this.videos.size;
 		let loadedAssets = 0;
 		this.audio.forEach((audioObject: AbstractAudio) => {
 			if (audioObject.isLoaded()) {
+				loadedAssets++;
+			}
+		});
+		this.images.forEach((imageObject: AbstractImage) => {
+			if (imageObject.isLoaded()) {
 				loadedAssets++;
 			}
 		});
