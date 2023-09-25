@@ -31,7 +31,7 @@ export class Scene extends AbstractScene {
 		this.processTextOneYearAgo();
 		this.processVideoOneYearAgo();
 
-		if (this.passedTime >= 3500 && this.passedTime >= 50000) {
+		if (this.passedTime >= 50000) {
 			SceneManager.getInstance().setScene(new NowScene());
 		}
 	}

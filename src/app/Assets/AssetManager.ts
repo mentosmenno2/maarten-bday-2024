@@ -1,6 +1,7 @@
 import { AbstractAudio } from './Audio/AbstractAudio.js';
 import { ButtonClick } from './Audio/ButtonClick.js';
 import { AbstractImage } from './Images/AbstractImage.js';
+import { BackgroundHome } from './Images/BackgroundHome.js';
 import { AbstractVideo } from './Videos/AbstractVideo.js';
 import { OneYearAgo } from './Videos/OneYearAgo.js';
 import { Today } from './Videos/Today.js';
@@ -35,7 +36,9 @@ export class AssetManager {
 			document.getElementById('volume-audio-effect-label-value')
 		);
 
-		this.images = new Map(Object.entries({}));
+		this.images = new Map(Object.entries({
+			backgroundHome: new BackgroundHome(),
+		}));
 
 		this.audio = new Map(
 			Object.entries({

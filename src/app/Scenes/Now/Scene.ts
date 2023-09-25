@@ -2,7 +2,10 @@ import { AssetManager } from '../../Assets/AssetManager.js';
 import { Text } from '../../GameObjects/Text.js';
 import { Video } from '../../GameObjects/Video.js';
 import { GameWindow } from '../../GameWindow.js';
+import { SceneManager } from '../../SceneManager.js';
 import { AbstractScene } from '../AbstractScene.js';
+import { Scene as HomeScene } from '../Home/Scene.js';
+import { StartingPositions as HomeStartingPositions } from '../Home/StartingPositions.js';
 
 export class Scene extends AbstractScene {
 	protected passedTime: number = 0;
@@ -28,6 +31,10 @@ export class Scene extends AbstractScene {
 		this.passedTime += deltaTime;
 		this.processtextToday();
 		this.processvideoToday();
+
+		if (this.passedTime >= 62000) {
+			SceneManager.getInstance().setScene(new HomeScene( HomeStartingPositions.None ));
+		}
 	}
 
 	private processtextToday(): void {
