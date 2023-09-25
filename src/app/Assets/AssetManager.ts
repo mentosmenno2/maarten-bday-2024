@@ -101,10 +101,15 @@ export class AssetManager {
 	}
 
 	public getLoadedPercentage(): number {
-		const totalAssets = this.audio.size + this.videos.size;
+		const totalAssets = this.audio.size + this.images.size + this.videos.size;
 		let loadedAssets = 0;
 		this.audio.forEach((audioObject: AbstractAudio) => {
 			if (audioObject.isLoaded()) {
+				loadedAssets++;
+			}
+		});
+		this.images.forEach((imageObject: AbstractImage) => {
+			if (imageObject.isLoaded()) {
 				loadedAssets++;
 			}
 		});

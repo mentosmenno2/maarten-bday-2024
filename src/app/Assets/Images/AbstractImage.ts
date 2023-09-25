@@ -8,6 +8,8 @@ export abstract class AbstractImage extends AbstractAsset {
 	public constructor() {
 		super();
 		this.imageElement = new Image();
+		this.imageElement.loading = 'eager';
+		this.imageElement.onload = this.onLoad.bind(this);
 		this.imageElement.addEventListener('load', this.onLoad.bind(this));
 	}
 
@@ -15,6 +17,10 @@ export abstract class AbstractImage extends AbstractAsset {
 
 	public getImageElement(): HTMLImageElement {
 		return this.imageElement;
+	}
+
+	public isLoaded(): boolean {
+		return this.loaded || this.imageElement.complete;
 	}
 
 	public getWidth(): number {
