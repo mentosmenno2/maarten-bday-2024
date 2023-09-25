@@ -9,6 +9,8 @@ export abstract class AbstractGameObject {
 	protected height: number = 0;
 	protected opacity: number = 1;
 	protected speed: number = 0;
+	protected targetX: number = 0;
+	protected targetY: number = 0;
 
 	public constructor() {}
 
@@ -66,6 +68,26 @@ export abstract class AbstractGameObject {
 
 	public setSpeed(speed: number): void {
 		this.speed = speed;
+	}
+
+	public getTargetX(): number {
+		return this.targetX;
+	}
+
+	public setTargetX(targetX: number): void {
+		this.targetX = targetX;
+	}
+
+	public getTargetY(): number {
+		return this.targetY;
+	}
+
+	public setTargetY(targetY: number): void {
+		this.targetY = targetY;
+	}
+
+	public isAtTargetPosition(): boolean {
+		return this.x === this.targetX && this.y === this.targetY;
 	}
 
 	public abstract draw(): void;
