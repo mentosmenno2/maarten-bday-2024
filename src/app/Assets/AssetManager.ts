@@ -3,6 +3,7 @@ import { ButtonClick } from './Audio/ButtonClick.js';
 import { AbstractImage } from './Images/AbstractImage.js';
 import { AbstractVideo } from './Videos/AbstractVideo.js';
 import { OneYearAgo } from './Videos/OneYearAgo.js';
+import { Today } from './Videos/Today.js';
 
 export class AssetManager {
 	private static instance: AssetManager | null;
@@ -45,6 +46,7 @@ export class AssetManager {
 		this.videos = new Map(
 			Object.entries({
 				oneYearAgo: new OneYearAgo(),
+				today: new Today(),
 			}),
 		);
 
