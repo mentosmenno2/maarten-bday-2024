@@ -2,6 +2,7 @@ import { AssetManager } from '../../Assets/AssetManager.js';
 import { Text } from '../../GameObjects/Text.js';
 import { Video } from '../../GameObjects/Video.js';
 import { GameWindow } from '../../GameWindow.js';
+import { Position } from '../../Position.js';
 import { SceneManager } from '../../SceneManager.js';
 import { AbstractScene } from '../AbstractScene.js';
 import { Scene as NowScene } from '../Now/Scene.js';
@@ -11,6 +12,7 @@ export class Scene extends AbstractScene {
 
 	protected textOneYearAgo: Text;
 	protected videoOneYearAgo: Video;
+	protected textSkip: Text;
 
 	public constructor() {
 		super();
@@ -24,16 +26,40 @@ export class Scene extends AbstractScene {
 		this.videoOneYearAgo.setAsset(
 			AssetManager.getInstance().getVideos().get('oneYearAgo'),
 		);
+
+		this.textSkip = new Text();
+		this.textSkip.setText('Click to skip');
+
+		GameWindow.getInstance().getCanvasElement().style.cursor = 'pointer';
 	}
 
 	public process(deltaTime: number): void {
 		this.passedTime += deltaTime;
 		this.processTextOneYearAgo();
 		this.processVideoOneYearAgo();
+		this.processTextSkip();
 
 		if (this.passedTime >= 50000) {
-			SceneManager.getInstance().setScene(new NowScene());
+			this.goToNextScene();
 		}
+	}
+
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public onMouseClick(_position: Position): void {
+		AssetManager.getInstance()
+			.getAudio()
+			.get('buttonClick')
+			.getAudioElement()
+			.play();
+		this.goToNextScene();
+	}
+
+	private processTextSkip(): void {
+		const gameWindow = GameWindow.getInstance();
+		this.textSkip.setWidth(gameWindow.getWidth() * 0.2);
+		this.textSkip.setHeight(gameWindow.getHeight() * 0.1);
+		this.textSkip.setX(gameWindow.getWidth() - this.textSkip.getWidth() - 10 );
+		this.textSkip.setY(gameWindow.getHeight() - this.textSkip.getHeight() - 10 );
 	}
 
 	private processTextOneYearAgo(): void {
@@ -80,5 +106,12 @@ export class Scene extends AbstractScene {
 	public draw(): void {
 		this.textOneYearAgo.draw();
 		this.videoOneYearAgo.draw();
+		this.textSkip.draw();
+	}
+
+	private goToNextScene(): void {
+		this.videoOneYearAgo.getAsset().getVideoElement().pause();
+		GameWindow.getInstance().getCanvasElement().style.cursor = 'auto';
+		SceneManager.getInstance().setScene(new NowScene());
 	}
 }
