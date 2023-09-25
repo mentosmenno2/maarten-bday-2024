@@ -59,8 +59,8 @@ export class Scene extends AbstractScene {
 		const gameWindow = GameWindow.getInstance();
 		this.textSkip.setWidth(gameWindow.getWidth() * 0.2);
 		this.textSkip.setHeight(gameWindow.getHeight() * 0.1);
-		this.textSkip.setX(gameWindow.getWidth() - this.textSkip.getWidth() - 10 );
-		this.textSkip.setY(gameWindow.getHeight() - this.textSkip.getHeight() - 10 );
+		this.textSkip.setX(gameWindow.getWidth() - this.textSkip.getWidth() - 10);
+		this.textSkip.setY(gameWindow.getHeight() - this.textSkip.getHeight() - 10);
 	}
 
 	private processtextToday(): void {
@@ -114,6 +114,8 @@ export class Scene extends AbstractScene {
 	private goToNextScene(): void {
 		this.videoToday.getAsset().getVideoElement().pause();
 		GameWindow.getInstance().getCanvasElement().style.cursor = 'auto';
-		SceneManager.getInstance().setScene(new HomeScene(HomeStartingPositions.PC));
+		SceneManager.getInstance().setScene(
+			new HomeScene(HomeStartingPositions.PC),
+		);
 	}
 }
