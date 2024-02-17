@@ -4,7 +4,7 @@ import { GameWindow } from '../../GameWindow.js';
 import { Position } from '../../Position.js';
 import { SceneManager } from '../../SceneManager.js';
 import { AbstractScene } from '../AbstractScene.js';
-import { Scene as OneYearAgoScene } from '../OneYearAgo/Scene.js';
+import { Scene as IntroScene } from '../Intro/Scene.js';
 
 export class Scene extends AbstractScene {
 	protected passedTime: number = 0;
@@ -56,7 +56,7 @@ export class Scene extends AbstractScene {
 			.getAudioElement()
 			.play();
 		GameWindow.getInstance().getCanvasElement().style.cursor = 'auto';
-		SceneManager.getInstance().setScene(new OneYearAgoScene());
+		SceneManager.getInstance().setScene(new IntroScene());
 	}
 
 	private processLoadingText(): void {

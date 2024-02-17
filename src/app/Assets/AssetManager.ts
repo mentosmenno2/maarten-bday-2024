@@ -4,8 +4,7 @@ import { AbstractImage } from './Images/AbstractImage.js';
 import { BackgroundHome } from './Images/BackgroundHome.js';
 import { DuckMaarten } from './Images/DuckMaarten.js';
 import { AbstractVideo } from './Videos/AbstractVideo.js';
-import { OneYearAgo } from './Videos/OneYearAgo.js';
-import { Today } from './Videos/Today.js';
+import { Intro } from './Videos/Intro.js';
 
 export enum Images {
 	BackgroundHome = 'backgroundHome',
@@ -57,8 +56,7 @@ export class AssetManager {
 
 		this.videos = new Map(
 			Object.entries({
-				oneYearAgo: new OneYearAgo(),
-				today: new Today(),
+				intro: new Intro(),
 			}),
 		);
 
