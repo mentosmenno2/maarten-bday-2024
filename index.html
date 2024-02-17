@@ -10,68 +10,24 @@
 
 		<link
 			rel="preload"
-			href="assets/fonts/VT323/VT323-Regular.woff"
+			href="assets/fonts/ComicSansMS/ComicSansMS.woff"
 			as="font"
 			type="font/woff"
 			crossorigin
 		/>
 		<link
 			rel="preload"
-			href="assets/fonts/VT323/VT323-Regular.woff2"
+			href="assets/fonts/ComicSansMS/ComicSansMS.woff2"
 			as="font"
 			type="font/woff2"
 			crossorigin
 		/>
-		<link rel="stylesheet" href="assets/fonts/VT323/stylesheet.css" />
+		<link rel="stylesheet" href="assets/fonts/ComicSansMS/stylesheet.css" />
 
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body>
-		<header>
-			<h1>Maarten Bday 2024 - RubberDuckyOS</h1>
-		</header>
-		<main class="game">
-			<canvas
-				class="game-window"
-				id="game-window"
-				width="1000"
-				height="1000"
-			></canvas>
-		</main>
-		<footer>
-			<div class="volume-settings">
-				<div>
-					<label for="volume-audio-music-input">
-						Music volume:
-						<span id="volume-audio-music-label-value" class="volume-value volume-audio-music-value"></span>%
-					</label>
-					<input
-						type="range"
-						min="0"
-						max="100"
-						value="0"
-						class="slider slider-volume"
-						id="volume-audio-music-input"
-					/>
-				</div>
-				<div>
-					<label for="volume-audio-effect-input">
-						Effects volume:
-						<span id="volume-audio-effect-label-value" class="volume-value volume-audio-effect-value"></span>%
-					</label>
-					<input
-						type="range"
-						min="0"
-						max="100"
-						value="0"
-						class="slider slider-volume"
-						id="volume-audio-effect-input"
-					/>
-				</div>
-			</div>
-			<p class="copyright">&#169; Menno van den Ende - 2024</p>
-		</footer>
-
+		<div id="app"></div>
 		<script src="build/main.js" type="module"></script>
 	</body>
 </html>
