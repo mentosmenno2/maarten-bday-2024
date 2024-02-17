@@ -1,3 +1,3 @@
-import { Game } from './app/Game.js';
+import { App } from './App.js';
 
-Game.getInstance().initialize();
+App.getInstance().initialize();
