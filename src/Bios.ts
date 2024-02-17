@@ -1,17 +1,15 @@
-import { BiosStateDataInterface } from "./State/BiosStateDataInterface.js";
-import { HasStateDataInterface } from "./State/HasStateDataInterface.js";
-import { StateDataInterface } from "./State/StateDataInterface.js";
+import { BiosStateDataInterface } from './State/BiosStateDataInterface.js';
+import { HasStateDataInterface } from './State/HasStateDataInterface.js';
+import { StateDataInterface } from './State/StateDataInterface.js';
 
 export class Bios implements HasStateDataInterface {
-	constructor() {
-
-	}
+	constructor() {}
 
 	public getStateData(): StateDataInterface {
 		return <BiosStateDataInterface>{};
 	}
 
-	public static fromStateData( stateData: BiosStateDataInterface ): Bios {
+	public static fromStateData(stateData: BiosStateDataInterface): Bios {
 		console.log(stateData);
 		return new Bios();
 	}

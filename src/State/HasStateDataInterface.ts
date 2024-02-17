@@ -1,4 +1,4 @@
-import { StateDataInterface } from "./StateDataInterface.js";
+import { StateDataInterface } from './StateDataInterface.js';
 
 export interface HasStateDataInterface {
 	getStateData(): StateDataInterface;

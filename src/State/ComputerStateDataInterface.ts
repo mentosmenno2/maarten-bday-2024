@@ -1,6 +1,6 @@
-import { BiosStateDataInterface } from "./BiosStateDataInterface.js";
+import { BiosStateDataInterface } from './BiosStateDataInterface.js';
 
 export interface ComputerStateDataInterface {
 	id: string;
-	bios: BiosStateDataInterface|null;
+	bios: BiosStateDataInterface | null;
 }

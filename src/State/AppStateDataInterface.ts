@@ -1,5 +1,5 @@
-import { ComputerStateDataInterface } from "./ComputerStateDataInterface.js";
+import { ComputerStateDataInterface } from './ComputerStateDataInterface.js';
 
 export interface AppStateDataInterface {
-	computers: ComputerStateDataInterface[]
+	computers: ComputerStateDataInterface[];
 }

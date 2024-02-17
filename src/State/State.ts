@@ -1,4 +1,4 @@
-import { AppStateDataInterface } from "./AppStateDataInterface.js";
+import { AppStateDataInterface } from './AppStateDataInterface.js';
 
 export class State {
 	private static instance: State | null;
@@ -7,13 +7,13 @@ export class State {
 
 	private constructor() {
 		const foundState = this.getFromLocalStorage();
-		if ( foundState ) {
+		if (foundState) {
 			this.data = foundState;
 			return;
 		}
 
 		this.data = <AppStateDataInterface>{
-			computers: []
+			computers: [],
 		};
 	}
 
@@ -33,17 +33,17 @@ export class State {
 	}
 
 	private saveToLocalStorage(): void {
-		localStorage.setItem( 'state', JSON.stringify( this.data ) );
+		localStorage.setItem('state', JSON.stringify(this.data));
 	}
 
-	private getFromLocalStorage(): AppStateDataInterface|null {
+	private getFromLocalStorage(): AppStateDataInterface | null {
 		const savedDataString = localStorage.getItem('state');
-		if (! savedDataString) {
-		  return null;
+		if (!savedDataString) {
+			return null;
 		}
 
 		const savedDataObject = JSON.parse(savedDataString);
-		if ( ! savedDataObject ) {
+		if (!savedDataObject) {
 			return null;
 		}
 

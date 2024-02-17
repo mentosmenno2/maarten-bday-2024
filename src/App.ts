@@ -1,8 +1,8 @@
-import { Bios } from "./Bios.js";
-import { Computer } from "./Computers/Computer.js";
-import { AppStateDataInterface } from "./State/AppStateDataInterface.js";
-import { HasStateDataInterface } from "./State/HasStateDataInterface.js";
-import { State } from "./State/State.js";
+import { Bios } from './Bios.js';
+import { Computer } from './Computers/Computer.js';
+import { AppStateDataInterface } from './State/AppStateDataInterface.js';
+import { HasStateDataInterface } from './State/HasStateDataInterface.js';
+import { State } from './State/State.js';
 
 export class App implements HasStateDataInterface {
 	private static instance: App | null;
@@ -11,21 +11,21 @@ export class App implements HasStateDataInterface {
 
 	private computers: Computer[];
 
-	private constructor( computers: Computer[] ) {
+	private constructor(computers: Computer[]) {
 		this.computers = computers;
 	}
 
 	public static getInstance(): App {
 		if (!this.instance) {
-			this.instance = this.fromStateData( State.getInstance().getData() );
+			this.instance = this.fromStateData(State.getInstance().getData());
 		}
 		return this.instance;
 	}
 
 	public initialize(): void {
 		// If not has computer, create computer
-		if ( ! this.computers.length ) {
-			this.computers.push( new Computer('maarten', new Bios()) );
+		if (!this.computers.length) {
+			this.computers.push(new Computer('maarten', new Bios()));
 		}
 
 		console.log('initialized');
@@ -43,7 +43,7 @@ export class App implements HasStateDataInterface {
 		return <AppStateDataInterface>{
 			computers: this.computers.map((computer) => {
 				return computer.getStateData();
-			})
+			}),
 		};
 	}
 
@@ -55,8 +55,8 @@ export class App implements HasStateDataInterface {
 	public static fromStateData(stateData: AppStateDataInterface): App {
 		return new App(
 			stateData.computers.map((computer) => {
-				return Computer.fromStateData( computer );
-			})
+				return Computer.fromStateData(computer);
+			}),
 		);
 	}
 }
