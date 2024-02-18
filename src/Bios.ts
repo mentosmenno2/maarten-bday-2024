@@ -36,7 +36,7 @@ export class Bios implements HasStateDataInterface, DisplayOutputInterface {
 		selectBiosHeading.style.fontSize = '30px';
 		selectBiosHeading.style.textAlign = 'center';
 
-		// hardcoded, please replace
+		// Hardcoded, please replace
 		const operatingSystemButton = document.createElement('button');
 		operatingSystemButton.innerText = 'DuckyOS';
 		operatingSystemButton.style.borderWidth = '2px';
@@ -54,6 +54,13 @@ export class Bios implements HasStateDataInterface, DisplayOutputInterface {
 		operatingSystemList.style.listStyleType = 'none';
 		operatingSystemList.append(operatingSystemListItem);
 
+		const credits = document.createElement('footer');
+		credits.innerText = 'Made by Mennowl in Portugeese';
+		credits.style.width = '100%';
+		credits.style.fontSize = '12px';
+		credits.style.textAlign = 'center';
+		credits.style.padding = '20px';
+
 		this.element = document.createElement('div');
 		this.element.id = 'bios';
 		this.element.style.width = '100%';
@@ -66,6 +73,6 @@ export class Bios implements HasStateDataInterface, DisplayOutputInterface {
 		this.element.style.flexWrap = 'nowrap';
 		this.element.style.justifyContent = 'flex-start';
 		this.element.style.alignItems = 'center';
-		this.element.append(heading, selectBiosHeading, operatingSystemList);
+		this.element.append(heading, selectBiosHeading, operatingSystemList, credits);
 	}
 }
