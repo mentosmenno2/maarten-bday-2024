@@ -73,6 +73,11 @@ export class Bios implements HasStateDataInterface, DisplayOutputInterface {
 		this.element.style.flexWrap = 'nowrap';
 		this.element.style.justifyContent = 'flex-start';
 		this.element.style.alignItems = 'center';
-		this.element.append(heading, selectBiosHeading, operatingSystemList, credits);
+		this.element.append(
+			heading,
+			selectBiosHeading,
+			operatingSystemList,
+			credits,
+		);
 	}
 }
