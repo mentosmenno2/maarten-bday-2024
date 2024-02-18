@@ -25,7 +25,7 @@ export class Bios implements HasStateDataInterface, DisplayOutputInterface {
 
 	private generateElement(): void {
 		const heading = document.createElement('h1');
-		heading.innerText = 'Duckloader BIOS';
+		heading.innerText = 'BIrdOS';
 		heading.style.width = '100%';
 		heading.style.fontSize = '40px';
 		heading.style.textAlign = 'center';
