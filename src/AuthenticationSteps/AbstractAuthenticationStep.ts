@@ -1,11 +1,13 @@
-import { Authentication } from "../Authentication.js";
-import { DisplayOutputInterface } from "../DisplayOutputInterface.js";
+import { Authentication } from '../Authentication.js';
+import { DisplayOutputInterface } from '../DisplayOutputInterface.js';
 
-export abstract class AbstractAuthenticationStep implements DisplayOutputInterface {
+export abstract class AbstractAuthenticationStep
+	implements DisplayOutputInterface
+{
 	protected element: HTMLDivElement;
 	private authentication: Authentication;
 
-	public constructor( authentication: Authentication ) {
+	public constructor(authentication: Authentication) {
 		this.authentication = authentication;
 		this.generateElement();
 	}

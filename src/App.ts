@@ -36,6 +36,6 @@ export class App implements DisplayOutputInterface {
 		this.element.style.backgroundColor = 'white';
 		this.element.style.color = 'black';
 
-		this.element.appendChild( this.authentication.getElement() );
+		this.element.appendChild(this.authentication.getElement());
 	}
 }

@@ -12,9 +12,7 @@ export class Authentication implements DisplayOutputInterface {
 
 	public constructor() {
 		this.happyBirthdayMessage = new HappyBirthdayMessage();
-		this.authenticationSteps = [
-			new EnterName( this ),
-		];
+		this.authenticationSteps = [new EnterName(this)];
 		this.authenticationStepIndex = 0;
 		this.generateElement();
 	}
@@ -35,10 +33,10 @@ export class Authentication implements DisplayOutputInterface {
 	protected displayCurrentAuthenticationStepElement(): void {
 		this.element.innerHTML = '';
 		const authenticationStep = this.getCurrentAuthenticationStep();
-		if ( authenticationStep ) {
-			this.element.appendChild( authenticationStep.getElement() );
+		if (authenticationStep) {
+			this.element.appendChild(authenticationStep.getElement());
 		} else {
-			this.element.appendChild( this.happyBirthdayMessage.getElement() );
+			this.element.appendChild(this.happyBirthdayMessage.getElement());
 		}
 	}
 
