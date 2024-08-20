@@ -1,14 +1,17 @@
 import { AbstractAuthenticationStep } from './AuthenticationSteps/AbstractAuthenticationStep.js';
 import { EnterName } from './AuthenticationSteps/EnterName.js';
 import { DisplayOutputInterface } from './DisplayOutputInterface.js';
+import { HappyBirthdayMessage } from './HappyBirthdayMessage.js';
 
 export class Authentication implements DisplayOutputInterface {
 	private element: HTMLDivElement;
 
 	private authenticationSteps: AbstractAuthenticationStep[];
 	private authenticationStepIndex: number;
+	private happyBirthdayMessage: HappyBirthdayMessage;
 
 	public constructor() {
+		this.happyBirthdayMessage = new HappyBirthdayMessage();
 		this.authenticationSteps = [
 			new EnterName( this ),
 		];
@@ -25,7 +28,7 @@ export class Authentication implements DisplayOutputInterface {
 	}
 
 	public gotToNextAuthenticationStep(): void {
-		this.element.innerHTML = '';
+		this.authenticationStepIndex++;
 		this.displayCurrentAuthenticationStepElement();
 	}
 
@@ -34,6 +37,8 @@ export class Authentication implements DisplayOutputInterface {
 		const authenticationStep = this.getCurrentAuthenticationStep();
 		if ( authenticationStep ) {
 			this.element.appendChild( authenticationStep.getElement() );
+		} else {
+			this.element.appendChild( this.happyBirthdayMessage.getElement() );
 		}
 	}
 

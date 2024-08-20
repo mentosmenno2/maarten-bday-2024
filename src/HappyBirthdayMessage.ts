@@ -18,5 +18,6 @@ export class HappyBirthdayMessage implements DisplayOutputInterface {
 		this.element.style.height = '100%';
 		this.element.style.backgroundColor = 'white';
 		this.element.style.color = 'black';
+		this.element.textContent = 'Happy Birthday Maarten!';
 	}
 }

@@ -8,6 +8,7 @@ export class EnterName extends AbstractAuthenticationStep {
 
 	public constructor( authentication: Authentication ) {
 		super( authentication );
+		this.generateElement();
 	}
 
 	protected generateElement(): void {
@@ -48,6 +49,7 @@ export class EnterName extends AbstractAuthenticationStep {
 		console.log(this);
 		if ( this.getNameInputElement().value.toLowerCase() !== 'maarten' ) {
 			alert( 'Verkeerde naam' );
+			return;
 		}
 
 		return this.getAuthentication().gotToNextAuthenticationStep();
