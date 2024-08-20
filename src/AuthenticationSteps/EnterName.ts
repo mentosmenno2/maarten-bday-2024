@@ -22,10 +22,7 @@ export class EnterName extends AbstractAuthenticationStep {
 		this.formElement = <HTMLFormElement>document.createElement('form');
 		this.formElement.appendChild(this.nameInputElement);
 		this.formElement.appendChild(submitInputElement);
-		this.formElement.addEventListener('submit', (e) => {
-			e.preventDefault();
-			this.validate();
-		});
+		this.formElement.addEventListener('submit', this.onFormSubmit.bind(this));
 
 		this.element = <HTMLDivElement>document.createElement('div');
 		this.element.classList.add('authentication-step');
@@ -46,8 +43,12 @@ export class EnterName extends AbstractAuthenticationStep {
 		return this.formElement;
 	}
 
+	private onFormSubmit(e: SubmitEvent): void {
+		e.preventDefault();
+		this.validate();
+	}
+
 	protected validate(): void {
-		console.log(this);
 		if (this.getNameInputElement().value.toLowerCase() !== 'maarten') {
 			alert('Verkeerde naam');
 			return;
