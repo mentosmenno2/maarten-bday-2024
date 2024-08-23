@@ -1,5 +1,6 @@
 import { AbstractAuthenticationStep } from './AuthenticationSteps/AbstractAuthenticationStep.js';
 import { EnterName } from './AuthenticationSteps/EnterName.js';
+import { FreeExpression } from './AuthenticationSteps/FreeExpression.js';
 import { IAmARobot } from './AuthenticationSteps/IAmARobot.js';
 import { DisplayOutputInterface } from './DisplayOutputInterface.js';
 import { HappyBirthdayMessage } from './HappyBirthdayMessage.js';
@@ -13,7 +14,11 @@ export class Authentication implements DisplayOutputInterface {
 
 	public constructor() {
 		this.happyBirthdayMessage = new HappyBirthdayMessage();
-		this.authenticationSteps = [new EnterName(this), new IAmARobot(this)];
+		this.authenticationSteps = [
+			new EnterName(this),
+			new FreeExpression(this),
+			new IAmARobot(this),
+		];
 		this.authenticationStepIndex = 0;
 		this.generateElement();
 	}
