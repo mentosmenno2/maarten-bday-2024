@@ -73,6 +73,10 @@ export class TakeAPie extends AbstractAuthenticationStep {
 			'change',
 			this.onRangeInputChange.bind(this),
 		);
+		this.rangeInput.addEventListener(
+			'input',
+			this.onRangeInputChange.bind(this),
+		);
 		this.buttonLessElement.addEventListener(
 			'click',
 			this.onButtonLessClick.bind(this),
@@ -85,10 +89,23 @@ export class TakeAPie extends AbstractAuthenticationStep {
 	}
 
 	public terminate(): void {
-		this.formElement.removeEventListener(
-			'submit',
-			this.onFormSubmit.bind(this),
+		this.rangeInput.removeEventListener(
+			'change',
+			this.onRangeInputChange.bind(this),
 		);
+		this.rangeInput.removeEventListener(
+			'input',
+			this.onRangeInputChange.bind(this),
+		);
+		this.buttonLessElement.removeEventListener(
+			'click',
+			this.onButtonLessClick.bind(this),
+		);
+		this.buttonMoreElement.removeEventListener(
+			'click',
+			this.onButtonMoreClick.bind(this),
+		);
+		this.formElement.removeEventListener('submit', this.onFormSubmit.bind(this));
 	}
 
 	public getPieElement(): HTMLDivElement {
