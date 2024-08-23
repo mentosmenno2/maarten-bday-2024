@@ -29,7 +29,7 @@ export class EnterPhone extends AbstractAuthenticationStep {
 
 		this.element = <HTMLDivElement>document.createElement('div');
 		this.element.classList.add('authentication-step');
-		this.element.id = 'authentication-step-enter-name';
+		this.element.id = 'authentication-step-enter-phone';
 		this.element.style.width = '100%';
 		this.element.style.height = '100%';
 		this.element.style.backgroundColor = 'white';
