@@ -94,11 +94,11 @@ export class EnterName extends AbstractAuthenticationStep {
 		}
 	}
 
-	private shiftLetterDown(letter) {
+	private shiftLetterDown(letter: string): string {
 		if (letter === 'A') return 'Z';
 		if (letter === 'a') return 'z';
 
-		let code = letter.charCodeAt(0);
+		const code = letter.charCodeAt(0);
 		return String.fromCharCode(code - 1);
 	}
 }
