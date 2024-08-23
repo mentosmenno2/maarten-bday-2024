@@ -13,7 +13,7 @@ export class FreeExpression extends AbstractAuthenticationStep {
 	}
 
 	protected generateElement(): void {
-		const paragraphElement = <HTMLParagraphElement>document.createElement('p');
+		const paragraphElement = <HTMLParagraphElement>document.createElement('1h');
 		const objectToDraw = this.getObjectToDraw();
 		paragraphElement.textContent = `Teken je mooiste ${objectToDraw}.`;
 
