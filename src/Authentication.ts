@@ -13,10 +13,7 @@ export class Authentication implements DisplayOutputInterface {
 
 	public constructor() {
 		this.happyBirthdayMessage = new HappyBirthdayMessage();
-		this.authenticationSteps = [
-			new EnterName(this),
-			new IAmARobot(this),
-		];
+		this.authenticationSteps = [new EnterName(this), new IAmARobot(this)];
 		this.authenticationStepIndex = 0;
 		this.generateElement();
 	}

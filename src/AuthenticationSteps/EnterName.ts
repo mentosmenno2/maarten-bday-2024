@@ -36,13 +36,22 @@ export class EnterName extends AbstractAuthenticationStep {
 	}
 
 	public initialize(): void {
-		this.nameInputElement.addEventListener('input', this.onNameInput.bind(this));
+		this.nameInputElement.addEventListener(
+			'input',
+			this.onNameInput.bind(this),
+		);
 		this.formElement.addEventListener('submit', this.onFormSubmit.bind(this));
 	}
 
 	public terminate(): void {
-		this.nameInputElement.removeEventListener('input', this.onNameInput.bind(this));
-		this.formElement.removeEventListener('submit', this.onFormSubmit.bind(this));
+		this.nameInputElement.removeEventListener(
+			'input',
+			this.onNameInput.bind(this),
+		);
+		this.formElement.removeEventListener(
+			'submit',
+			this.onFormSubmit.bind(this),
+		);
 	}
 
 	public getNameInputElement(): HTMLInputElement {
@@ -61,7 +70,9 @@ export class EnterName extends AbstractAuthenticationStep {
 	protected validate(): void {
 		const allowedNames = ['maarten', 'xdbyss']; // xdbyss = cheats
 
-		if ( ! allowedNames.includes( this.getNameInputElement().value.toLowerCase( ))) {
+		if (
+			!allowedNames.includes(this.getNameInputElement().value.toLowerCase())
+		) {
 			alert('Verkeerde naam');
 			return;
 		}
@@ -69,7 +80,7 @@ export class EnterName extends AbstractAuthenticationStep {
 		return this.getAuthentication().gotToNextAuthenticationStep();
 	}
 
-	private onNameInput( e: InputEvent ): void {
+	private onNameInput(e: InputEvent): void {
 		e.preventDefault();
 
 		const value = this.nameInputElement.value;

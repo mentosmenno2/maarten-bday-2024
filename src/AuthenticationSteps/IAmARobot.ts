@@ -52,9 +52,14 @@ export class IAmARobot extends AbstractAuthenticationStep {
 	}
 
 	public terminate(): void {
-		this.formElement.removeEventListener('submit', this.onFormSubmit.bind(this));
+		this.formElement.removeEventListener(
+			'submit',
+			this.onFormSubmit.bind(this),
+		);
 
-		Console.log('🔒 Klaar met de pret, de element inspector is weer verboden terrein.');
+		Console.log(
+			'🔒 Klaar met de pret, de element inspector is weer verboden terrein.',
+		);
 	}
 
 	public getRobotInputElement(): HTMLInputElement {
@@ -71,7 +76,7 @@ export class IAmARobot extends AbstractAuthenticationStep {
 	}
 
 	protected validate(): void {
-		if (! this.getRobotInputElement().checked) {
+		if (!this.getRobotInputElement().checked) {
 			alert('Sorry, je bent geen robot');
 			return;
 		}
