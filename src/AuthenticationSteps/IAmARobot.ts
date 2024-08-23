@@ -47,14 +47,29 @@ export class IAmARobot extends AbstractAuthenticationStep {
 
 	public initialize(): void {
 		this.formElement.addEventListener('submit', this.onFormSubmit.bind(this));
+		screen.orientation.addEventListener(
+			'change',
+			this.onOrientationChange.bind(this),
+		);
 
 		Console.log('🔓 Vooruit, voor deze ene keer mag je hier klooien :).');
+
+		if ('ontouchstart' in document.documentElement) {
+			alert(
+				'Omdat je een mobiele telefoon gebruikt, moet je even andersom denken dan anders.',
+			);
+		}
 	}
 
 	public terminate(): void {
 		this.formElement.removeEventListener(
 			'submit',
 			this.onFormSubmit.bind(this),
+		);
+
+		screen.orientation.removeEventListener(
+			'change',
+			this.onOrientationChange.bind(this),
 		);
 
 		Console.log(
@@ -73,6 +88,14 @@ export class IAmARobot extends AbstractAuthenticationStep {
 	private onFormSubmit(e: SubmitEvent): void {
 		e.preventDefault();
 		this.validate();
+	}
+
+	private onOrientationChange(): void {
+		if (screen.orientation.type === 'portrait-secondary') {
+			this.robotInputElement.disabled = false;
+		} else {
+			this.robotInputElement.disabled = true;
+		}
 	}
 
 	protected validate(): void {
