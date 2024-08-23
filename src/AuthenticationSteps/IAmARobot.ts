@@ -13,6 +13,9 @@ export class IAmARobot extends AbstractAuthenticationStep {
 	}
 
 	protected generateElement(): void {
+		const headingElement = <HTMLHeadingElement>document.createElement('h1');
+		headingElement.textContent = `Bevestig dat je een robot bent`;
+
 		this.robotInputElement = <HTMLInputElement>document.createElement('input');
 		this.robotInputElement.type = 'checkbox';
 		this.robotInputElement.value = '1';
@@ -42,6 +45,7 @@ export class IAmARobot extends AbstractAuthenticationStep {
 		this.element.style.backgroundColor = 'white';
 		this.element.style.color = 'black';
 
+		this.element.appendChild(headingElement);
 		this.element.appendChild(this.formElement);
 	}
 

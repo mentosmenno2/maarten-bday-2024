@@ -13,9 +13,9 @@ export class FreeExpression extends AbstractAuthenticationStep {
 	}
 
 	protected generateElement(): void {
-		const paragraphElement = <HTMLParagraphElement>document.createElement('1h');
+		const headingElement = <HTMLHeadingElement>document.createElement('h1');
 		const objectToDraw = this.getObjectToDraw();
-		paragraphElement.textContent = `Teken je mooiste ${objectToDraw}.`;
+		headingElement.textContent = `Teken je mooiste ${objectToDraw}`;
 
 		this.canvasElement = <HTMLCanvasElement>document.createElement('canvas');
 		this.canvasElement.width = 2000;
@@ -40,7 +40,7 @@ export class FreeExpression extends AbstractAuthenticationStep {
 		this.element.style.backgroundColor = 'white';
 		this.element.style.color = 'black';
 
-		this.element.appendChild(paragraphElement);
+		this.element.appendChild(headingElement);
 		this.element.appendChild(this.canvasElement);
 		this.element.appendChild(this.formElement);
 	}

@@ -11,6 +11,9 @@ export class EnterPhone extends AbstractAuthenticationStep {
 	}
 
 	protected generateElement(): void {
+		const headingElement = <HTMLHeadingElement>document.createElement('h1');
+		headingElement.textContent = `Vul je mobiele telefoonnummer in`;
+
 		this.nameInputElement = <HTMLInputElement>document.createElement('input');
 		this.nameInputElement.type = 'text';
 
@@ -32,6 +35,7 @@ export class EnterPhone extends AbstractAuthenticationStep {
 		this.element.style.backgroundColor = 'white';
 		this.element.style.color = 'black';
 
+		this.element.appendChild(headingElement);
 		this.element.appendChild(this.formElement);
 	}
 
