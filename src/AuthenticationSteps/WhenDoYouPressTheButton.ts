@@ -1,4 +1,5 @@
 import { Authentication } from '../Authentication.js';
+import { Colors } from '../Colors.js';
 import { AbstractAuthenticationStep } from './AbstractAuthenticationStep.js';
 
 export class WhenDoYouPressTheButton extends AbstractAuthenticationStep {
@@ -12,7 +13,7 @@ export class WhenDoYouPressTheButton extends AbstractAuthenticationStep {
 	}
 
 	protected generateElement(): void {
-		const headingElement = <HTMLHeadingElement>document.createElement('h1');
+		const headingElement = <HTMLHeadingElement>document.createElement('h2');
 		headingElement.textContent = `Wanneer klik jij op de knop?`;
 
 		this.buttonElement = <HTMLButtonElement>document.createElement('button');
@@ -23,8 +24,9 @@ export class WhenDoYouPressTheButton extends AbstractAuthenticationStep {
 		this.element.id = 'authentication-step-when-do-you-press-the-button';
 		this.element.style.width = '100%';
 		this.element.style.height = '100%';
-		this.element.style.backgroundColor = 'white';
-		this.element.style.color = 'black';
+		this.element.style.backgroundColor = Colors.Black;
+		this.element.style.color = Colors.White;
+		this.element.style.position = 'absolute';
 
 		this.element.appendChild(headingElement);
 		this.element.appendChild(this.buttonElement);

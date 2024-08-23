@@ -1,4 +1,5 @@
 import { Authentication } from '../Authentication.js';
+import { Colors } from '../Colors.js';
 import { AbstractAuthenticationStep } from './AbstractAuthenticationStep.js';
 
 export class EnterName extends AbstractAuthenticationStep {
@@ -11,7 +12,7 @@ export class EnterName extends AbstractAuthenticationStep {
 	}
 
 	protected generateElement(): void {
-		const headingElement = <HTMLHeadingElement>document.createElement('h1');
+		const headingElement = <HTMLHeadingElement>document.createElement('h2');
 		headingElement.textContent = `Vul je voornaam in`;
 
 		this.nameInputElement = <HTMLInputElement>document.createElement('input');
@@ -32,8 +33,14 @@ export class EnterName extends AbstractAuthenticationStep {
 		this.element.id = 'authentication-step-enter-name';
 		this.element.style.width = '100%';
 		this.element.style.height = '100%';
-		this.element.style.backgroundColor = 'white';
-		this.element.style.color = 'black';
+		this.element.style.backgroundColor = Colors.Black;
+		this.element.style.color = Colors.White;
+		this.element.style.position = 'absolute';
+		this.element.style.display = 'flex';
+		this.element.style.flexDirection = 'column';
+		this.element.style.flexWrap = 'nowrap';
+		this.element.style.justifyContent = 'flex-start';
+		this.element.style.alignItems = 'center';
 
 		this.element.appendChild(headingElement);
 		this.element.appendChild(this.formElement);

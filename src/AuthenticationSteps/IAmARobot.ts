@@ -1,4 +1,5 @@
 import { Authentication } from '../Authentication.js';
+import { Colors } from '../Colors.js';
 import { Console } from '../Console.js';
 import { AbstractAuthenticationStep } from './AbstractAuthenticationStep.js';
 
@@ -13,7 +14,7 @@ export class IAmARobot extends AbstractAuthenticationStep {
 	}
 
 	protected generateElement(): void {
-		const headingElement = <HTMLHeadingElement>document.createElement('h1');
+		const headingElement = <HTMLHeadingElement>document.createElement('h2');
 		headingElement.textContent = `Bevestig dat je een robot bent`;
 
 		this.robotInputElement = <HTMLInputElement>document.createElement('input');
@@ -42,8 +43,9 @@ export class IAmARobot extends AbstractAuthenticationStep {
 		this.element.id = 'authentication-step-i-am-a-robot';
 		this.element.style.width = '100%';
 		this.element.style.height = '100%';
-		this.element.style.backgroundColor = 'white';
-		this.element.style.color = 'black';
+		this.element.style.backgroundColor = Colors.Black;
+		this.element.style.color = Colors.White;
+		this.element.style.position = 'absolute';
 
 		this.element.appendChild(headingElement);
 		this.element.appendChild(this.formElement);

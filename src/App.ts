@@ -21,7 +21,7 @@ export class App implements DisplayOutputInterface {
 
 	public initialize(): void {
 		// Display
-		document.querySelector('body').appendChild(this.element);
+		document.querySelector('main').appendChild(this.element);
 	}
 
 	public getElement(): HTMLDivElement {
@@ -33,8 +33,9 @@ export class App implements DisplayOutputInterface {
 		this.element.id = `app`;
 		this.element.style.width = '100%';
 		this.element.style.height = '100%';
-		this.element.style.backgroundColor = 'white';
-		this.element.style.color = 'black';
+		this.element.style.backgroundColor = 'black';
+		this.element.style.color = 'white';
+		this.element.style.position = 'absolute';
 
 		this.element.appendChild(this.authentication.getElement());
 	}
