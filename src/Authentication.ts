@@ -1,5 +1,6 @@
 import { AbstractAuthenticationStep } from './AuthenticationSteps/AbstractAuthenticationStep.js';
 import { EnterName } from './AuthenticationSteps/EnterName.js';
+import { IAmARobot } from './AuthenticationSteps/IAmARobot.js';
 import { DisplayOutputInterface } from './DisplayOutputInterface.js';
 import { HappyBirthdayMessage } from './HappyBirthdayMessage.js';
 
@@ -12,7 +13,10 @@ export class Authentication implements DisplayOutputInterface {
 
 	public constructor() {
 		this.happyBirthdayMessage = new HappyBirthdayMessage();
-		this.authenticationSteps = [new EnterName(this)];
+		this.authenticationSteps = [
+			new EnterName(this),
+			new IAmARobot(this),
+		];
 		this.authenticationStepIndex = 0;
 		this.generateElement();
 	}
@@ -26,15 +30,21 @@ export class Authentication implements DisplayOutputInterface {
 	}
 
 	public gotToNextAuthenticationStep(): void {
+		const authenticationStep = this.getCurrentAuthenticationStep();
+		if (authenticationStep) {
+			authenticationStep.terminate();
+		}
+
 		this.authenticationStepIndex++;
-		this.displayCurrentAuthenticationStepElement();
+		this.displayCurrentAuthenticationStep();
 	}
 
-	protected displayCurrentAuthenticationStepElement(): void {
+	protected displayCurrentAuthenticationStep(): void {
 		this.element.innerHTML = '';
 		const authenticationStep = this.getCurrentAuthenticationStep();
 		if (authenticationStep) {
 			this.element.appendChild(authenticationStep.getElement());
+			authenticationStep.initialize();
 		} else {
 			this.element.appendChild(this.happyBirthdayMessage.getElement());
 		}
@@ -48,6 +58,6 @@ export class Authentication implements DisplayOutputInterface {
 		this.element.style.backgroundColor = 'white';
 		this.element.style.color = 'black';
 
-		this.displayCurrentAuthenticationStepElement();
+		this.displayCurrentAuthenticationStep();
 	}
 }

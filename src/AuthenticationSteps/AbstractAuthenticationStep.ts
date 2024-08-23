@@ -18,6 +18,9 @@ export abstract class AbstractAuthenticationStep
 
 	protected abstract generateElement(): void;
 
+	public abstract initialize(): void;
+	public abstract terminate(): void;
+
 	public getAuthentication(): Authentication {
 		return this.authentication;
 	}
