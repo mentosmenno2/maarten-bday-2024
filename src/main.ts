@@ -2,7 +2,7 @@ import { App } from './App.js';
 import { Console } from './Console.js';
 
 Console.log(
-	"%c🔒 Trying to bypass the authentication by hacking your way around in the code? No no no, we don't allow that at this time!",
+	"🔒 Trying to bypass the authentication by hacking your way around in the code? No no no, we don't allow that at this time!",
 );
 
 try {
