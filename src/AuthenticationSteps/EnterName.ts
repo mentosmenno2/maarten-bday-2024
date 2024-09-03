@@ -25,6 +25,11 @@ export class EnterName extends AbstractAuthenticationStep {
 		submitInputElement.value = 'Controleren';
 
 		this.formElement = <HTMLFormElement>document.createElement('form');
+		this.formElement.style.display = 'flex';
+		this.formElement.style.flexDirection = 'column';
+		this.formElement.style.flexWrap = 'nowrap';
+		this.formElement.style.justifyContent = 'flex-start';
+		this.formElement.style.alignItems = 'center';
 		this.formElement.appendChild(this.nameInputElement);
 		this.formElement.appendChild(submitInputElement);
 

@@ -22,8 +22,9 @@ export class FreeExpression extends AbstractAuthenticationStep {
 		this.canvasElement = <HTMLCanvasElement>document.createElement('canvas');
 		this.canvasElement.width = 2000;
 		this.canvasElement.height = 2000;
-		this.canvasElement.style.width = '300px';
-		this.canvasElement.style.maxWidth = 'calc( 100% - 40px )';
+		this.canvasElement.style.height = '300px';
+		this.canvasElement.style.maxHeight = 'calc( 100% - 150px )';
+		this.canvasElement.style.aspectRatio = '1/1';
 		this.canvasElement.style.backgroundColor = Colors.White;
 
 		const submitInputElement = <HTMLInputElement>(
@@ -33,6 +34,11 @@ export class FreeExpression extends AbstractAuthenticationStep {
 		submitInputElement.value = 'Controleren';
 
 		this.formElement = <HTMLFormElement>document.createElement('form');
+		this.formElement.style.display = 'flex';
+		this.formElement.style.flexDirection = 'column';
+		this.formElement.style.flexWrap = 'nowrap';
+		this.formElement.style.justifyContent = 'flex-start';
+		this.formElement.style.alignItems = 'center';
 		this.formElement.appendChild(submitInputElement);
 
 		this.element = <HTMLDivElement>document.createElement('div');
@@ -143,14 +149,18 @@ export class FreeExpression extends AbstractAuthenticationStep {
 		ctx.lineCap = 'round';
 		ctx.strokeStyle = 'black';
 
-		const { x, y } = this.getScaledCoordinates(e);
+		const coordinates = this.getScaledCoordinates(e);
+		if (!coordinates) {
+			return;
+		}
+		const { x, y } = coordinates;
 		ctx.lineTo(x, y);
 		ctx.stroke();
 		ctx.beginPath();
 		ctx.moveTo(x, y);
 	}
 
-	private getScaledCoordinates(e: TouchEvent | MouseEvent): {
+	private getScaledCoordinates(e: TouchEvent | MouseEvent): null | {
 		x: number;
 		y: number;
 	} {
@@ -164,6 +174,8 @@ export class FreeExpression extends AbstractAuthenticationStep {
 		} else if (window.MouseEvent && e instanceof MouseEvent) {
 			x = e.clientX - rect.left;
 			y = e.clientY - rect.top;
+		} else {
+			return null;
 		}
 
 		x *= this.canvasElement.width / rect.width;
