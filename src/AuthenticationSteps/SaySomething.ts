@@ -27,7 +27,7 @@ export class SaySomething extends AbstractAuthenticationStep {
 
 	protected generateElement(): void {
 		const headingElement = <HTMLHeadingElement>document.createElement('h2');
-		headingElement.textContent = `Zeg de volgende woorden na`;
+		headingElement.textContent = 'Zeg de volgende woorden na';
 
 		this.sentence = this.generateRandomAnimalSentence();
 		this.questionElement = <HTMLParagraphElement>document.createElement('p');

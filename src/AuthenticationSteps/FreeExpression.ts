@@ -156,10 +156,10 @@ export class FreeExpression extends AbstractAuthenticationStep {
 		let x = 0;
 		let y = 0;
 
-		if (e instanceof TouchEvent && e.touches.length > 0) {
+		if (window.TouchEvent && e instanceof TouchEvent && e.touches.length > 0) {
 			x = e.touches[0].clientX - rect.left;
 			y = e.touches[0].clientY - rect.top;
-		} else if (e instanceof MouseEvent) {
+		} else if (window.MouseEvent && e instanceof MouseEvent) {
 			x = e.clientX - rect.left;
 			y = e.clientY - rect.top;
 		}

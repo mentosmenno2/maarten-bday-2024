@@ -15,7 +15,7 @@ export class IAmARobot extends AbstractAuthenticationStep {
 
 	protected generateElement(): void {
 		const headingElement = <HTMLHeadingElement>document.createElement('h2');
-		headingElement.textContent = `Bevestig dat je een robot bent`;
+		headingElement.textContent = 'Bevestig dat je een robot bent';
 
 		this.robotInputElement = <HTMLInputElement>document.createElement('input');
 		this.robotInputElement.type = 'checkbox';

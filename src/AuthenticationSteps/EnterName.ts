@@ -13,7 +13,7 @@ export class EnterName extends AbstractAuthenticationStep {
 
 	protected generateElement(): void {
 		const headingElement = <HTMLHeadingElement>document.createElement('h2');
-		headingElement.textContent = `Vul je voornaam in`;
+		headingElement.textContent = 'Vul je voornaam in';
 
 		this.nameInputElement = <HTMLInputElement>document.createElement('input');
 		this.nameInputElement.type = 'text';
