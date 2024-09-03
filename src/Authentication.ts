@@ -18,10 +18,10 @@ export class Authentication implements DisplayOutputInterface {
 	public constructor() {
 		this.happyBirthdayMessage = new HappyBirthdayMessage();
 		this.authenticationSteps = [
-			new SaySomething(this),
 			new EnterName(this),
 			new TakeAPie(this),
 			new FreeExpression(this),
+			new SaySomething(this),
 			new IAmARobot(this),
 			new WhenDoYouPressTheButton(this),
 		];
