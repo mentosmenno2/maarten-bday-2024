@@ -9,6 +9,7 @@ export class SaySomething extends AbstractAuthenticationStep {
 	private words: string = '';
 	private sentence: string;
 	private valdated: boolean = false;
+	private buttonElement: HTMLButtonElement;
 
 	public constructor(authentication: Authentication) {
 		super(authentication);
@@ -36,6 +37,10 @@ export class SaySomething extends AbstractAuthenticationStep {
 		this.questionElement = <HTMLParagraphElement>document.createElement('p');
 		this.questionElement.innerText = `"${this.sentence}"`;
 		this.answerElement = <HTMLParagraphElement>document.createElement('p');
+		this.answerElement.innerText = '...';
+
+		this.buttonElement = <HTMLButtonElement>document.createElement('button');
+		this.buttonElement.innerText = 'Mijn browser heeft geen coole features';
 
 		this.element = <HTMLDivElement>document.createElement('div');
 		this.element.classList.add('authentication-step');
@@ -54,20 +59,34 @@ export class SaySomething extends AbstractAuthenticationStep {
 		this.element.appendChild(headingElement);
 		this.element.appendChild(this.questionElement);
 		this.element.appendChild(this.answerElement);
+		this.element.appendChild(this.buttonElement);
 	}
 
 	public initialize(): void {
+		this.buttonElement.addEventListener(
+			'click',
+			this.onButtonElementClick.bind(this),
+		);
+
 		if (!this.recognition) {
-			alert('Stomme browser, boohooo');
-			return this.getAuthentication().gotToNextAuthenticationStep();
+			alert('Je browser heeft geen coole features, boohooo');
+			return;
 		}
 
 		this.recognition.addEventListener('result', this.onWordSaid.bind(this));
-
 		this.recognition.start();
 	}
 
 	public terminate(): void {
+		this.buttonElement.removeEventListener(
+			'click',
+			this.onButtonElementClick.bind(this),
+		);
+
+		if (!this.recognition) {
+			return;
+		}
+
 		this.recognition.stop();
 		this.recognition.removeEventListener('result', this.onWordSaid.bind(this));
 	}
@@ -124,5 +143,10 @@ export class SaySomething extends AbstractAuthenticationStep {
 		const object = objects[Math.floor(Math.random() * objects.length)];
 
 		return `${subject} ${verb} ${object}`;
+	}
+
+	private onButtonElementClick(): void {
+		alert( 'Stoooooom' );
+		return this.getAuthentication().gotToNextAuthenticationStep();
 	}
 }
