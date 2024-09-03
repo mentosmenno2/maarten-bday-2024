@@ -22,7 +22,8 @@ export class HappyBirthdayMessage implements DisplayOutputInterface {
 		imageElement.alt = 'Evil Duck';
 		imageElement.src = './assets/images/evil-duck.png';
 		imageElement.style.imageRendering = 'pixelated';
-		imageElement.style.width = '150px';
+		imageElement.style.height = '400px';
+		imageElement.style.maxHeight = 'calc( 100% - 200px )';
 		imageElement.style.animation = 'spin 4s linear infinite';
 
 		const linkElement = <HTMLAnchorElement>document.createElement('a');
