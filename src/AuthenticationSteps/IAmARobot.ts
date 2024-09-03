@@ -7,6 +7,7 @@ export class IAmARobot extends AbstractAuthenticationStep {
 	private robotInputElement: HTMLInputElement;
 	private formElement: HTMLFormElement;
 	private labelElement: HTMLLabelElement;
+	private initialOrientation: string|null;
 
 	public constructor(authentication: Authentication) {
 		super(authentication);
@@ -80,6 +81,7 @@ export class IAmARobot extends AbstractAuthenticationStep {
 
 		Console.log('🔓 Vooruit, voor deze ene keer mag je hier klooien :).');
 
+		this.initialOrientation = screen.orientation.type;
 		if ('ontouchstart' in document.documentElement) {
 			alert(
 				'Omdat je een mobiele telefoon gebruikt, moet je even andersom denken dan anders.',
@@ -118,6 +120,8 @@ export class IAmARobot extends AbstractAuthenticationStep {
 
 	private onOrientationChange(): void {
 		if (screen.orientation.type === 'portrait-secondary') {
+			this.robotInputElement.disabled = false;
+		} else if (screen.orientation.type !== this.initialOrientation) {
 			this.robotInputElement.disabled = false;
 		} else {
 			this.robotInputElement.disabled = true;

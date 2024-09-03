@@ -23,7 +23,7 @@ export class FreeExpression extends AbstractAuthenticationStep {
 		this.canvasElement.width = 2000;
 		this.canvasElement.height = 2000;
 		this.canvasElement.style.height = '300px';
-		this.canvasElement.style.maxHeight = 'calc( 100% - 150px )';
+		this.canvasElement.style.maxHeight = 'calc( 100% - 180px )';
 		this.canvasElement.style.aspectRatio = '1/1';
 		this.canvasElement.style.backgroundColor = Colors.White;
 
