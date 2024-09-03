@@ -146,7 +146,7 @@ export class SaySomething extends AbstractAuthenticationStep {
 	}
 
 	private onButtonElementClick(): void {
-		alert( 'Stoooooom' );
+		alert('Stoooooom');
 		return this.getAuthentication().gotToNextAuthenticationStep();
 	}
 }
