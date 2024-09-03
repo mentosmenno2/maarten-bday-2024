@@ -27,6 +27,15 @@ export class IAmARobot extends AbstractAuthenticationStep {
 		this.labelElement.innerText = 'Ik ben een robot';
 		this.labelElement.htmlFor = 'authentication-step-enter-name-robot-input';
 
+		const robotInputWrapperElement = <HTMLDivElement>document.createElement('div');
+		robotInputWrapperElement.style.display = 'flex';
+		robotInputWrapperElement.style.flexDirection = 'row';
+		robotInputWrapperElement.style.flexWrap = 'nowrap';
+		robotInputWrapperElement.style.justifyContent = 'flex-start';
+		robotInputWrapperElement.style.alignItems = 'center';
+		robotInputWrapperElement.appendChild(this.robotInputElement);
+		robotInputWrapperElement.appendChild(this.labelElement);
+
 		const submitInputElement = <HTMLInputElement>(
 			document.createElement('input')
 		);
@@ -34,8 +43,12 @@ export class IAmARobot extends AbstractAuthenticationStep {
 		submitInputElement.value = 'Controleren';
 
 		this.formElement = <HTMLFormElement>document.createElement('form');
-		this.formElement.appendChild(this.robotInputElement);
-		this.formElement.appendChild(this.labelElement);
+		this.formElement.style.display = 'flex';
+		this.formElement.style.flexDirection = 'column';
+		this.formElement.style.flexWrap = 'nowrap';
+		this.formElement.style.justifyContent = 'flex-start';
+		this.formElement.style.alignItems = 'center';
+		this.formElement.appendChild(robotInputWrapperElement);
 		this.formElement.appendChild(submitInputElement);
 
 		this.element = <HTMLDivElement>document.createElement('div');
@@ -46,6 +59,11 @@ export class IAmARobot extends AbstractAuthenticationStep {
 		this.element.style.backgroundColor = Colors.Black;
 		this.element.style.color = Colors.White;
 		this.element.style.position = 'absolute';
+		this.element.style.display = 'flex';
+		this.element.style.flexDirection = 'column';
+		this.element.style.flexWrap = 'nowrap';
+		this.element.style.justifyContent = 'flex-start';
+		this.element.style.alignItems = 'center';
 
 		this.element.appendChild(headingElement);
 		this.element.appendChild(this.formElement);

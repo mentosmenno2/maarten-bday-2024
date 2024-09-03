@@ -28,13 +28,9 @@ export class TakeAPie extends AbstractAuthenticationStep {
 		this.rangeInput.style.width = '150px';
 
 		this.piePercentageElement = <HTMLSpanElement>document.createElement('span');
-		this.piePercentageElement.style.display = 'flex';
-		this.piePercentageElement.style.flexDirection = 'column';
-		this.piePercentageElement.style.flexWrap = 'nowrap';
-		this.piePercentageElement.style.justifyContent = 'center';
-		this.piePercentageElement.style.alignItems = 'center';
 		this.piePercentageElement.style.textShadow = `0px 0px 5px ${Colors.Black}`;
-		this.piePercentageElement.style.webkitTextStroke = `2px ${Colors.Black}`;
+		this.piePercentageElement.style.webkitTextStroke = `1px ${Colors.Black}`;
+		this.piePercentageElement.style.fontSize = '40px';
 
 		this.pieElement = <HTMLDivElement>document.createElement('div');
 		this.pieElement.style.height = '200px';

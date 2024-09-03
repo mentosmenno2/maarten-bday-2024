@@ -14,7 +14,7 @@ export class WhenDoYouPressTheButton extends AbstractAuthenticationStep {
 
 	protected generateElement(): void {
 		const headingElement = <HTMLHeadingElement>document.createElement('h2');
-		headingElement.textContent = `Wanneer klik jij op de knop?`;
+		headingElement.textContent = 'Wat is het leukste verjaardagskado?';
 
 		this.buttonElement = <HTMLButtonElement>document.createElement('button');
 		this.setGiftText();
@@ -27,6 +27,11 @@ export class WhenDoYouPressTheButton extends AbstractAuthenticationStep {
 		this.element.style.backgroundColor = Colors.Black;
 		this.element.style.color = Colors.White;
 		this.element.style.position = 'absolute';
+		this.element.style.display = 'flex';
+		this.element.style.flexDirection = 'column';
+		this.element.style.flexWrap = 'nowrap';
+		this.element.style.justifyContent = 'flex-start';
+		this.element.style.alignItems = 'center';
 
 		this.element.appendChild(headingElement);
 		this.element.appendChild(this.buttonElement);

@@ -23,6 +23,7 @@ export class FreeExpression extends AbstractAuthenticationStep {
 		this.canvasElement.height = 2000;
 		this.canvasElement.style.width = '300px';
 		this.canvasElement.style.maxWidth = 'calc( 100% - 40px )';
+		this.canvasElement.style.backgroundColor = Colors.White;
 
 		const submitInputElement = <HTMLInputElement>(
 			document.createElement('input')
@@ -41,6 +42,11 @@ export class FreeExpression extends AbstractAuthenticationStep {
 		this.element.style.backgroundColor = Colors.Black;
 		this.element.style.color = Colors.White;
 		this.element.style.position = 'absolute';
+		this.element.style.display = 'flex';
+		this.element.style.flexDirection = 'column';
+		this.element.style.flexWrap = 'nowrap';
+		this.element.style.justifyContent = 'flex-start';
+		this.element.style.alignItems = 'center';
 
 		this.element.appendChild(headingElement);
 		this.element.appendChild(this.canvasElement);
