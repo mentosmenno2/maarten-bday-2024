@@ -195,6 +195,8 @@ export class TakeAPie extends AbstractAuthenticationStep {
 			alert('Dat is toch geen taart');
 			return;
 		}
+
+		alert('lekker man, heb je al een stukje op?');
 		return this.getAuthentication().gotToNextAuthenticationStep();
 	}
 }

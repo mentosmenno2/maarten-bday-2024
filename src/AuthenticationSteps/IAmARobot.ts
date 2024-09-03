@@ -130,6 +130,7 @@ export class IAmARobot extends AbstractAuthenticationStep {
 			return;
 		}
 
+		alert('Beep boop, jij hoort erbij');
 		return this.getAuthentication().gotToNextAuthenticationStep();
 	}
 }

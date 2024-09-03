@@ -98,12 +98,13 @@ export class SaySomething extends AbstractAuthenticationStep {
 			return;
 		}
 
-		// Prevent validation. Cannot prevent events in time.
+		// Prevent validation. Cannot prevent events in time as recognition fires delayed.
 		if (this.valdated) {
 			return;
 		}
 		this.valdated = true;
 
+		alert('Die stem, die herken ik ergens van');
 		return this.getAuthentication().gotToNextAuthenticationStep();
 	}
 

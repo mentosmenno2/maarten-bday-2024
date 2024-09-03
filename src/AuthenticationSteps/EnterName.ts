@@ -88,6 +88,9 @@ export class EnterName extends AbstractAuthenticationStep {
 			return;
 		}
 
+		alert(
+			'Correct! Het was knap geweest als het hier al mis zou gaan natuurlijk',
+		);
 		return this.getAuthentication().gotToNextAuthenticationStep();
 	}
 

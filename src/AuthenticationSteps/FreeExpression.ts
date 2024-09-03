@@ -7,6 +7,7 @@ export class FreeExpression extends AbstractAuthenticationStep {
 	private formElement: HTMLFormElement;
 	private drawing = false;
 	private hasDrawn = false;
+	private objectToDraw = '';
 
 	public constructor(authentication: Authentication) {
 		super(authentication);
@@ -15,8 +16,8 @@ export class FreeExpression extends AbstractAuthenticationStep {
 
 	protected generateElement(): void {
 		const headingElement = <HTMLHeadingElement>document.createElement('h2');
-		const objectToDraw = this.getObjectToDraw();
-		headingElement.textContent = `Teken je mooiste ${objectToDraw}`;
+		this.objectToDraw = this.getObjectToDraw();
+		headingElement.textContent = `Teken je mooiste ${this.objectToDraw}`;
 
 		this.canvasElement = <HTMLCanvasElement>document.createElement('canvas');
 		this.canvasElement.width = 2000;
@@ -118,6 +119,7 @@ export class FreeExpression extends AbstractAuthenticationStep {
 			return;
 		}
 
+		alert(`Wat een prachtige ${this.objectToDraw}!`);
 		return this.getAuthentication().gotToNextAuthenticationStep();
 	}
 

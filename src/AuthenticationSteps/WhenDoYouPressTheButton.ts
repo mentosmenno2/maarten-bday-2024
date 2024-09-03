@@ -71,6 +71,8 @@ export class WhenDoYouPressTheButton extends AbstractAuthenticationStep {
 			alert('Ik weet wel een beter kadootje hoor!');
 			return;
 		}
+
+		alert('Wat lief!');
 		return this.getAuthentication().gotToNextAuthenticationStep();
 	}
 
