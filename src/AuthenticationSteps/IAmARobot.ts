@@ -7,7 +7,7 @@ export class IAmARobot extends AbstractAuthenticationStep {
 	private robotInputElement: HTMLInputElement;
 	private formElement: HTMLFormElement;
 	private labelElement: HTMLLabelElement;
-	private initialOrientation: string|null;
+	private initialOrientation: string | null;
 
 	public constructor(authentication: Authentication) {
 		super(authentication);
