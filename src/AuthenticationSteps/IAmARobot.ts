@@ -27,7 +27,9 @@ export class IAmARobot extends AbstractAuthenticationStep {
 		this.labelElement.innerText = 'Ik ben een robot';
 		this.labelElement.htmlFor = 'authentication-step-enter-name-robot-input';
 
-		const robotInputWrapperElement = <HTMLDivElement>document.createElement('div');
+		const robotInputWrapperElement = <HTMLDivElement>(
+			document.createElement('div')
+		);
 		robotInputWrapperElement.style.display = 'flex';
 		robotInputWrapperElement.style.flexDirection = 'row';
 		robotInputWrapperElement.style.flexWrap = 'nowrap';

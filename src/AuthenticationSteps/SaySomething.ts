@@ -3,10 +3,9 @@ import { Colors } from '../Colors.js';
 import { AbstractAuthenticationStep } from './AbstractAuthenticationStep.js';
 
 export class SaySomething extends AbstractAuthenticationStep {
-
 	private questionElement: HTMLParagraphElement;
 	private answerElement: HTMLParagraphElement;
-	private recognition: SpeechRecognition|null;
+	private recognition: SpeechRecognition | null;
 	private words: string = '';
 	private sentence: string;
 	private valdated: boolean = false;
@@ -15,11 +14,15 @@ export class SaySomething extends AbstractAuthenticationStep {
 		super(authentication);
 		this.generateElement();
 
-		const SpeechRecognition = window.SpeechRecognition ? window.SpeechRecognition : ( window.webkitSpeechRecognition ? window.webkitSpeechRecognition : null );
+		const SpeechRecognition = window.SpeechRecognition
+			? window.SpeechRecognition
+			: window.webkitSpeechRecognition
+			? window.webkitSpeechRecognition
+			: null;
 		this.recognition = SpeechRecognition ? new SpeechRecognition() : null;
-		if ( this.recognition ) {
+		if (this.recognition) {
 			this.recognition.continuous = true;
-			this.recognition.lang = "nl-NL";
+			this.recognition.lang = 'nl-NL';
 			this.recognition.interimResults = true;
 			this.recognition.maxAlternatives = 1;
 		}
@@ -54,36 +57,30 @@ export class SaySomething extends AbstractAuthenticationStep {
 	}
 
 	public initialize(): void {
-		if ( ! this.recognition ) {
-			alert( 'Stomme browser, boohooo' );
+		if (!this.recognition) {
+			alert('Stomme browser, boohooo');
 			return this.getAuthentication().gotToNextAuthenticationStep();
 		}
 
-		this.recognition.addEventListener(
-			'result',
-			this.onWordSaid.bind(this),
-		);
+		this.recognition.addEventListener('result', this.onWordSaid.bind(this));
 
 		this.recognition.start();
 	}
 
 	public terminate(): void {
 		this.recognition.stop();
-		this.recognition.removeEventListener(
-			'result',
-			this.onWordSaid.bind(this),
-		);
+		this.recognition.removeEventListener('result', this.onWordSaid.bind(this));
 	}
 
 	protected validate(): void {
 		const inputString = this.words.toLowerCase();
 		const answer = this.sentence.toLowerCase();
-		if ( inputString !== answer ) {
+		if (inputString !== answer) {
 			return;
 		}
 
 		// Prevent validation. Cannot prevent events in time.
-		if ( this.valdated ) {
+		if (this.valdated) {
 			return;
 		}
 		this.valdated = true;
@@ -91,21 +88,36 @@ export class SaySomething extends AbstractAuthenticationStep {
 		return this.getAuthentication().gotToNextAuthenticationStep();
 	}
 
-	private onWordSaid( event: SpeechRecognitionEvent ): void {
+	private onWordSaid(event: SpeechRecognitionEvent): void {
 		const lines = [];
 		for (let i = event.resultIndex; i < event.results.length; i++) {
-			lines.push( event.results[i][0].transcript.trim() );
-		};
+			lines.push(event.results[i][0].transcript.trim());
+		}
 
-		this.words = lines.join( ' ' ).toLowerCase().replace(/[^a-zA-Z0-9 ]/g, '');
+		this.words = lines
+			.join(' ')
+			.toLowerCase()
+			.replace(/[^a-zA-Z0-9 ]/g, '');
 		this.answerElement.textContent = this.words;
 		this.validate();
 	}
 
 	private generateRandomAnimalSentence(): string {
-		const subjects = ["De hond", "De kat", "De olifant", "De vogel", "De leeuw"];
-		const verbs = ["jaagt", "eet", "springt", "speelt", "slaapt"];
-		const objects = ["op een bal", "op een muis", "in het gras", "met een touw", "onder een boom"];
+		const subjects = [
+			'De hond',
+			'De kat',
+			'De olifant',
+			'De vogel',
+			'De leeuw',
+		];
+		const verbs = ['jaagt', 'eet', 'springt', 'speelt', 'slaapt'];
+		const objects = [
+			'op een bal',
+			'op een muis',
+			'in het gras',
+			'met een touw',
+			'onder een boom',
+		];
 
 		const subject = subjects[Math.floor(Math.random() * subjects.length)];
 		const verb = verbs[Math.floor(Math.random() * verbs.length)];

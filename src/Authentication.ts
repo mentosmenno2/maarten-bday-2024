@@ -55,6 +55,7 @@ export class Authentication implements DisplayOutputInterface {
 			authenticationStep.initialize();
 		} else {
 			this.element.appendChild(this.happyBirthdayMessage.getElement());
+			this.happyBirthdayMessage.initialize();
 		}
 	}
 
