@@ -6,6 +6,7 @@ export class WhenDoYouPressTheButton extends AbstractAuthenticationStep {
 	private buttonElement: HTMLButtonElement;
 	private seconds: number = 0;
 	private interval: NodeJS.Timeout | null = null;
+	private currentGift: string | null = null;
 
 	public constructor(authentication: Authentication) {
 		super(authentication);
@@ -66,8 +67,7 @@ export class WhenDoYouPressTheButton extends AbstractAuthenticationStep {
 	}
 
 	protected validate(): void {
-		const gift = this.getGift(this.seconds);
-		if (gift) {
+		if (this.currentGift) {
 			alert('Ik weet wel een beter kadootje hoor!');
 			return;
 		}
@@ -75,12 +75,13 @@ export class WhenDoYouPressTheButton extends AbstractAuthenticationStep {
 	}
 
 	private setGiftText(): void {
-		let gift = this.getGift(this.seconds);
-		if (!gift) {
-			gift = 'verjaardagsfelicitatie van Menno';
+		this.currentGift = this.getGift(this.seconds);
+		let giftText = this.currentGift;
+		if (!giftText) {
+			giftText = 'verjaardagsfelicitatie van Menno';
 		}
 
-		this.buttonElement.textContent = `Klik mij om een ${gift} te krijgen`;
+		this.buttonElement.textContent = `Klik mij om een ${giftText} te krijgen`;
 	}
 
 	private getGift(index: number): string | null {
