@@ -96,7 +96,7 @@ export class EnterName extends AbstractAuthenticationStep {
 		alert(
 			'Correct! Het was knap geweest als het hier al mis zou gaan natuurlijk',
 		);
-		return this.getAuthentication().gotToNextAuthenticationStep();
+		return this.getAuthentication().goToNextAuthenticationStep();
 	}
 
 	private onNameInput(e: InputEvent): void {

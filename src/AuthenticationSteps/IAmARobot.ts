@@ -135,6 +135,6 @@ export class IAmARobot extends AbstractAuthenticationStep {
 		}
 
 		alert('Beep boop, jij hoort erbij');
-		return this.getAuthentication().gotToNextAuthenticationStep();
+		return this.getAuthentication().goToNextAuthenticationStep();
 	}
 }

@@ -126,7 +126,7 @@ export class FreeExpression extends AbstractAuthenticationStep {
 		}
 
 		alert(`Wat een prachtige ${this.objectToDraw}!`);
-		return this.getAuthentication().gotToNextAuthenticationStep();
+		return this.getAuthentication().goToNextAuthenticationStep();
 	}
 
 	private startPosition(e: TouchEvent | MouseEvent): void {

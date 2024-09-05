@@ -73,7 +73,7 @@ export class WhenDoYouPressTheButton extends AbstractAuthenticationStep {
 		}
 
 		alert('Wat lief!');
-		return this.getAuthentication().gotToNextAuthenticationStep();
+		return this.getAuthentication().goToNextAuthenticationStep();
 	}
 
 	private setGiftText(): void {

@@ -37,7 +37,7 @@ export class Authentication implements DisplayOutputInterface {
 		return this.authenticationSteps[this.authenticationStepIndex] ?? null;
 	}
 
-	public gotToNextAuthenticationStep(): void {
+	public goToNextAuthenticationStep(): void {
 		const authenticationStep = this.getCurrentAuthenticationStep();
 		if (authenticationStep) {
 			authenticationStep.terminate();

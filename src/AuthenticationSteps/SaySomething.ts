@@ -105,7 +105,7 @@ export class SaySomething extends AbstractAuthenticationStep {
 		this.valdated = true;
 
 		alert('Die stem, die herken ik ergens van');
-		return this.getAuthentication().gotToNextAuthenticationStep();
+		return this.getAuthentication().goToNextAuthenticationStep();
 	}
 
 	private onWordSaid(event: SpeechRecognitionEvent): void {
@@ -148,6 +148,6 @@ export class SaySomething extends AbstractAuthenticationStep {
 
 	private onButtonElementClick(): void {
 		alert('Stoooooom');
-		return this.getAuthentication().gotToNextAuthenticationStep();
+		return this.getAuthentication().goToNextAuthenticationStep();
 	}
 }
